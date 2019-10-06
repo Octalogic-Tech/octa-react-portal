@@ -1,7 +1,11 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+
 import { useParams } from "react-router-dom";
 import ReactFullpage from "@fullpage/react-fullpage";
+
+import Landing from "../../sections/Landing"
+
+import Button from "@material-ui/core/Button";
 
 const data = {
 	name: "John",
@@ -30,9 +34,9 @@ const data = {
 	]
 };
 
-const Portfolio = props => {
+const Portfolio = ({toggleTheme}) => {
 	const { key } = useParams();
-
+    // console.log("key",key);
 	const renderSection = (section) => {
 		return (
 			<div className="section" key={section.key}>
@@ -79,14 +83,7 @@ const Portfolio = props => {
 				return (
 					<ReactFullpage.Wrapper>
 						<div className="section">
-							<p>Landing Screen</p>
-							<Button
-								onClick={() => {
-									fullpageApi.moveSectionDown();
-								}}
-							>
-								{key}
-							</Button>
+							<Landing key={key} fullpageApi={fullpageApi} toggleTheme={toggleTheme}/>
 						</div>
 						{data.projects.map((project, index) => {
 							return renderSection(project);

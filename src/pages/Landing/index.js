@@ -1,9 +1,9 @@
 import React from 'react';
 
-const NotFound = (props) => {
+const Landing = (props) => {
 return (
        <p>Landing Page</p>
     );
 };
 
-export default NotFound;
+export default Landing;

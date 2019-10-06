@@ -10,10 +10,12 @@ const data = {
 	name: "John",
 	projects: [
 		{
-			name: "Project 1"
+            name: "Project 1",
+            key: 'project-1'
 		},
 		{
-			name: "Project 2"
+            name: "Project 2",
+            key: 'project-2'
 		}
 	]
 };
@@ -27,16 +29,30 @@ const Portfolio = props => {
 				<p>{section.name}</p>
 			</div>
         );
-	};
+    };
+    
+    const getAnchors = (data) => {
+        let anchors = [];
+        anchors.push('landing');
+        data.projects.forEach(function(project) {
+            anchors.push(project.key);
+          });
+        return anchors
+    } 
 	return (
 		<ReactFullpage
 			licenseKey={"YOUR_KEY_HERE"}
-			scrollingSpeed={1000} /* Options here */
+			scrollingSpeed={1000}
+            dragAndMove = {true}
+            navigation = {true}
+            navigationPosition = {'right'}
+            slidesNavigation = {true}
+            anchors = {getAnchors(data)}
 			render={({ state, fullpageApi }) => {
 				return (
 					<ReactFullpage.Wrapper>
 						<div className="section">
-							<p>Section 1 (welcome to fullpage.js)</p>
+							<p>Landing Screen</p>
 							<Button
 								onClick={() => {
 									fullpageApi.moveSectionDown();

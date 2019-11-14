@@ -1,9 +1,8 @@
-import React from "react";
-
-import { useParams } from "react-router-dom";
+import React, {useState} from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 
-import Landing from "../../sections/Landing"
+import Landing from "../../sections/Landing";
+import WebAppPrimary from "../../sections/WebAppPrimary";
 
 import Button from "@material-ui/core/Button";
 
@@ -27,24 +26,23 @@ const data = {
 			key: "project-2",
 			slides: [
 				{
-                    name: "Slide 1"
+					name: "Slide 1"
 				}
 			]
 		}
 	]
 };
 
-const Portfolio = ({toggleTheme}) => {
-	const { key } = useParams();
-    // console.log("key",key);
-	const renderSection = (section) => {
+const Portfolio = ({ toggleTheme }) => {
+
+	const [activeSection, setActiveSection] = useState(data.projects[0].key);
+
+	const renderSection = section => {
 		return (
-			<div className="section" key={section.key}>
-				{
-                    section.slides.map((slide, index) => {
-					    return renderSlide(section,slide,index);
-				    })
-                }
+			<div className="section" key={section.key} anchor={section.key}>
+				{section.slides.map((slide, index) => {
+					return renderSlide(section, slide, index);
+				})}
 			</div>
 		);
 	};
@@ -63,7 +61,9 @@ const Portfolio = ({toggleTheme}) => {
 
 	const getAnchors = data => {
 		let anchors = [];
-		anchors.push("landing");
+		anchors.push("landing-1");
+		anchors.push("web-app-primary");
+		anchors.push("landing-2");
 		data.projects.forEach(function(project) {
 			anchors.push(project.key);
 		});
@@ -76,14 +76,39 @@ const Portfolio = ({toggleTheme}) => {
 			dragAndMove={true}
 			navigation={true}
 			navigationPosition={"right"}
-            slidesNavigation = {true}
-            controlArrows = {false}
+			slidesNavigation={true}
+			controlArrows={false}
 			anchors={getAnchors(data)}
-			render={({ state, fullpageApi }) => {
+			onLeave={(origin, destination, direction) => {
+				setActiveSection(destination);
+			}}
+			render={({ state, fullpageApi, onLeave }) => {
 				return (
 					<ReactFullpage.Wrapper>
 						<div className="section">
-							<Landing key={key} fullpageApi={fullpageApi} toggleTheme={toggleTheme}/>
+							<Landing
+								key={'landing-1'}
+								anchor={'landing-1'}
+								fullpageApi={fullpageApi}
+								toggleTheme={toggleTheme}
+							/>
+						</div>
+						<div className="section">
+							<WebAppPrimary
+								key={'web-app-primary'}
+								anchor={'web-app-primary'}
+								activeSection={activeSection}
+								fullpageApi={fullpageApi}
+								toggleTheme={toggleTheme}
+							/>
+						</div>
+						<div className="section">
+							<Landing
+								key={'landing-2'}
+								anchor={'landing-2'}
+								fullpageApi={fullpageApi}
+								toggleTheme={toggleTheme}
+							/>
 						</div>
 						{data.projects.map((project, index) => {
 							return renderSection(project);

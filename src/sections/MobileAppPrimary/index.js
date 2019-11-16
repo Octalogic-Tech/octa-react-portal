@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
-import { slideInLeft } from "react-animations";
+import { zoomIn } from "react-animations";
 import faker from "faker";
 import Icon from "@mdi/react";
-import { mdiReact } from "@mdi/js";
+import { mdiCheckboxBlankCircle, mdiReact } from "@mdi/js";
 
 import "html5-device-mockups";
 
@@ -21,25 +21,27 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Fab from "@material-ui/core/Fab";
 import "../../styles/overrides.css";
 
-import webapp from "../../assets/images/projects/webapp.png";
+import mobileapp from "../../assets/images/projects/mobileapp.png";
 
 let isActive = false;
 
-const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
+const MobileAppPrimary = ({
+	anchor,
+	activeSection,
+	fullpageApi,
+	toggleTheme
+}) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
 	if (activeSection.anchor === anchor) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
-		document.body.classList.remove('mobile-app-container');
-		document.body.classList.add('web-app-container');
+		document.body.classList.remove("web-app-container");
+		document.body.classList.add("mobile-app-container");
 	}
-
-	
-	
 
 	function generate(element) {
 		return [0, 1, 2].map((value, index) => (
-			<ListItem  key={index}>
+			<ListItem key={index}>
 				<ListItemIcon>
 					<KeyboardArrowRightIcon />
 				</ListItemIcon>
@@ -50,50 +52,57 @@ const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
 
 	return (
 		<Box className={css(styles.container)}>
-			<div className={css(styles.triangle_wrapper)}>
+			<div className={css(styles.circle_wrapper)}>
 				<div
 					className={css(
-						styles.triangle_large,
-						isActive && styles.slideInLeft_large
+						styles.circle_large,
+						isActive && styles.zoomIn_large
 					)}
-				></div>
-				<div
-					className={css(
-						styles.triangle_medium,
-						isActive && styles.slideInLeft_regular
-					)}
-				></div>
-				<div
-					className={css(
-						styles.triangle_small,
-						isActive && styles.slideInLeft_small
-					)}
-				></div>
+				>
+					<div
+						className={css(
+							styles.circle_medium,
+							isActive && styles.zoomIn_regular
+						)}
+					>
+						<div
+							className={css(
+								styles.circle_small,
+								isActive && styles.zoomIn_small
+							)}
+						></div>
+					</div>
+				</div>
 			</div>
 			<div className={css(styles.content_wrapper)}>
 				<div className={css(styles.frame_wrapper)}>
-					<div className="device-wrapper web_app">
+					<div className="device-wrapper mobile_app">
 						<div
 							className="device"
-							data-device="Macbook2015"
+							data-device="Pixel"
 							data-orientation="portrait"
-							data-color="white"
+							data-color="black"
 						>
 							<div className="screen">
 								<img
-								className={css(styles.frame_image)}
-								src={webapp}
-								alt="project"
-							/>
+									className={css(styles.frame_image)}
+									src={mobileapp}
+									alt="project"
+								/>
 							</div>
 							<div className="button"></div>
-							
 						</div>
 					</div>
 				</div>
 				<div className={css(styles.details_wrapper)}>
 					<Typography variant="overline" display="block" gutterBottom>
-						Web
+						Mobile
+						<Icon
+							className={css(styles.overline_icon)}
+							path={mdiCheckboxBlankCircle}
+							size={0.4}
+						/>
+						Native
 					</Typography>
 					<Typography
 						variant="h4"
@@ -155,92 +164,80 @@ const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
 const styles = StyleSheet.create({
 	container: base.container,
 	content_wrapper: base.content_wrapper,
-	triangle_wrapper: {
+	overline_icon: base.overline_icon,
+	circle_wrapper: {
 		position: "absolute",
-		left: "0",
-		top: "0",
+		left: "-5%",
+		top: "10%",
 		height: "100%",
 		width: "100%",
-        overflow: "hidden",
-	},
-	triangle_large: {
-		position: "absolute",
-		top: "-10rem",
-		left: "0",
-		width: "0",
-		height: "0",
-		borderTop: "40rem solid transparent",
-		borderLeft: "40rem solid",
-		borderLeftColor: colors.blue.dark,
-		borderBottom: "40rem solid transparent",
+		overflow: "hidden",
 		"@media only screen and (max-width: 600px)": {
-			top: "-5rem",
-			borderTopWidth: "15rem",
-			borderLeftWidth: "15rem",
-			borderBottomWidth: "15rem"
+			top: "0"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
-			top: "-5rem",
-			borderTopWidth: "20rem",
-			borderLeftWidth: "20rem",
-			borderBottomWidth: "20rem"
+			top: "0"
 		}
 	},
-	triangle_medium: {
-		position: "absolute",
-		top: "0",
-		left: "0",
-		width: "0",
-		height: "0",
-		borderTop: "30rem solid transparent",
-		borderLeft: "30rem solid ",
-		borderLeftColor: colors.blue.regular,
-		borderBottom: "30rem solid transparent",
+	circle_large: {
+		display: "flex",
+		justifyContent: "center",
+		height: "35rem",
+		width: "35rem",
+		borderRadius: "35rem",
+		backgroundColor: colors.orange.dark,
 		"@media only screen and (max-width: 600px)": {
-			borderTopWidth: "10rem",
-			borderLeftWidth: "10rem",
-			borderBottomWidth: "10rem"
+			height: "15rem",
+			width: "15rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
-			borderTopWidth: "15rem",
-			borderLeftWidth: "15rem",
-			borderBottomWidth: "15rem"
+			height: "25rem",
+			width: "25rem"
 		}
 	},
-	triangle_small: {
-		position: "absolute",
-		top: "10rem",
-		left: "0",
-		width: "0",
-		height: "0",
-		borderTop: "20rem solid transparent",
-		borderLeft: "20rem solid",
-		borderLeftColor: colors.blue.light,
-		borderBottom: "20rem solid transparent",
+	circle_medium: {
+		height: "27rem",
+		width: "27rem",
+		margin: "auto",
+		display: "flex",
+		justifyContent: "center",
+		borderRadius: "27rem",
+		backgroundColor: colors.orange.regular,
 		"@media only screen and (max-width: 600px)": {
-			top: "5rem",
-			borderTopWidth: "5rem",
-			borderLeftWidth: "5rem",
-			borderBottomWidth: "5rem"
+			height: "10rem",
+			width: "10rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
-			top: "5rem",
-			borderTopWidth: "10rem",
-			borderLeftWidth: "10rem",
-			borderBottomWidth: "10rem"
+			height: "18rem",
+			width: "18rem"
 		}
 	},
-	slideInLeft_large: {
-		animationName: slideInLeft,
-		animationDuration: "3s"
+	circle_small: {
+		height: "18rem",
+		width: "18rem",
+		margin: "auto",
+		borderRadius: "18rem",
+		backgroundColor: colors.orange.light,
+		"@media only screen and (max-width: 600px)": {
+			height: "5rem",
+			width: "5rem"
+		},
+		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
+			height: "10rem",
+			width: "10rem"
+		}
 	},
-	slideInLeft_regular: {
-		animationName: slideInLeft,
+	zoomIn_large: {
+		animationName: zoomIn,
 		animationDuration: "2s"
 	},
-	slideInLeft_small: {
-		animationName: slideInLeft,
+	zoomIn_regular: {
+		animationName: zoomIn,
 		animationDuration: "1s"
+	},
+	zoomIn_small: {
+		animationName: zoomIn,
+		animationDuration: "0.5s"
 	},
 	frame_wrapper: {
 		flex: "1",
@@ -254,7 +251,7 @@ const styles = StyleSheet.create({
 		}
 	},
 	frame_image: {
-		width: "100%",
+		width: "100%"
 	},
 	details_wrapper: {
 		padding: "2rem",
@@ -276,9 +273,9 @@ const styles = StyleSheet.create({
 	view_more_button: {
 		margin: "1rem 0rem",
 		padding: "0rem 2rem",
-		backgroundColor: colors.blue.regular,
+		backgroundColor: colors.orange.regular,
 		":hover": {
-			backgroundColor: colors.blue.dark
+			backgroundColor: colors.orange.dark
 		},
 		"@media (max-width: 769px)": {
 			justifyContent: "center"
@@ -310,11 +307,11 @@ const styles = StyleSheet.create({
 		borderRadius: "50px",
 		display: "flex",
 		justifyContent: "center",
-		backgroundColor: colors.blue.light,
+		backgroundColor: colors.orange.regular,
 		transition: "all .2s ease-in-out",
 		":hover": {
 			transform: "scale(1.1)",
-			backgroundColor: colors.blue.dark,
+			backgroundColor: colors.orange.dark,
 			color: "white",
 			fill: "white"
 		},
@@ -336,4 +333,4 @@ const styles = StyleSheet.create({
 	}
 });
 
-export default WebAppPrimary;
+export default MobileAppPrimary;

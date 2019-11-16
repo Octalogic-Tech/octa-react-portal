@@ -20,14 +20,9 @@ const styles = {
             padding:"1rem",
 		}
     },
-	pattern_wrapper: {
-		position: "absolute",
-		left: "0",
-		top: "0",
-		height: "100%",
-		width: "100%",
-        overflow: "hidden",
-	}
+    overline_icon:{
+        margin:"0rem 0.5rem"
+    },
 };
 
 export default styles;

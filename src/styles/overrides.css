@@ -1,0 +1,51 @@
+:root{
+    --blue-light: #87E3F9;
+    --blue-regular: #3EC4CD;
+    --blue-dark: #10ABB6;
+    --orange-light: #F9CEC2;
+    --orange-regular: #F5B499;
+    --orange-dark: #F47F6A;
+}
+
+.web_app {
+	max-width: 90% !important;
+	margin: auto !important;
+}
+
+.mobile_app {
+	max-width: 45% !important;
+	margin: auto !important;
+}
+
+@media only screen and (max-width: 600px) {
+	.mobile_app {
+		max-width: 25% !important;
+	}
+}
+
+@media only screen and (min-width: 601px) and (max-width: 769px) {
+    .web_app {
+        max-width: 75% !important;
+        margin: auto !important;
+    }
+
+	.mobile_app {
+		max-width: 20% !important;
+	}
+}
+
+.web-app-container #fp-nav ul li a span {
+    background: var(--blue-regular);
+}
+
+.web-app-container #fp-nav ul li a.active span {
+    background: var(--blue-dark);
+}
+
+.mobile-app-container #fp-nav ul li a span {
+    background: var(--orange-regular);
+}
+
+.mobile-app-container #fp-nav ul li a.active span {
+    background: var(--orange-dark);
+}

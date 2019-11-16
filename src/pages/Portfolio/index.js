@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 
 import Landing from "../../sections/Landing";
 import WebAppPrimary from "../../sections/WebAppPrimary";
+import MobileAppPrimary from "../../sections/MobileAppPrimary";
 
 import Button from "@material-ui/core/Button";
 
@@ -34,7 +35,6 @@ const data = {
 };
 
 const Portfolio = ({ toggleTheme }) => {
-
 	const [activeSection, setActiveSection] = useState(data.projects[0].key);
 
 	const renderSection = section => {
@@ -63,7 +63,7 @@ const Portfolio = ({ toggleTheme }) => {
 		let anchors = [];
 		anchors.push("landing-1");
 		anchors.push("web-app-primary");
-		anchors.push("landing-2");
+		anchors.push("mobile-app-primary");
 		data.projects.forEach(function(project) {
 			anchors.push(project.key);
 		});
@@ -87,25 +87,26 @@ const Portfolio = ({ toggleTheme }) => {
 					<ReactFullpage.Wrapper>
 						<div className="section">
 							<Landing
-								key={'landing-1'}
-								anchor={'landing-1'}
+								key={"landing-1"}
+								anchor={"landing-1"}
 								fullpageApi={fullpageApi}
 								toggleTheme={toggleTheme}
 							/>
 						</div>
 						<div className="section">
 							<WebAppPrimary
-								key={'web-app-primary'}
-								anchor={'web-app-primary'}
+								key={"web-app-primary"}
+								anchor={"web-app-primary"}
 								activeSection={activeSection}
 								fullpageApi={fullpageApi}
 								toggleTheme={toggleTheme}
 							/>
 						</div>
 						<div className="section">
-							<Landing
-								key={'landing-2'}
-								anchor={'landing-2'}
+							<MobileAppPrimary
+								key={"mobile-app-primary"}
+								anchor={"mobile-app-primary"}
+								activeSection={activeSection}
 								fullpageApi={fullpageApi}
 								toggleTheme={toggleTheme}
 							/>

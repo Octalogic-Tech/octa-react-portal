@@ -10,7 +10,9 @@
     "@mdi/js": "^4.5.95",
     "@mdi/react": "^1.2.1",
     "aphrodite": "^2.4.0",
+    "classnames": "^2.2.6",
     "faker": "^4.1.0",
+    "html5-device-mockups": "^3.2.1",
     "node-sass": "^4.13.0",
     "react": "^16.10.1",
     "react-animations": "^1.0.0",
@@ -39,5 +41,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "style-loader": "^1.0.0"
   }
 }

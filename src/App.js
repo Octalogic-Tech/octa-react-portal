@@ -29,7 +29,7 @@ const App = () => {
 	return (
 		<MuiThemeProvider theme={muiTheme}>
 			<CssBaseline>
-				<Routes toggleTheme={toggleTheme} />
+				<Routes toggleTheme={toggleTheme} currentTheme={theme} />
 			</CssBaseline>
 		</MuiThemeProvider>
 	);

@@ -25,18 +25,32 @@ import mobileapp from "../../assets/images/projects/mobileapp.png";
 
 let isActive = false;
 
+const navDotStyling = (currentValue) => {
+	const classes = [
+		"web-app-container",
+		"mobile-app-container",
+		"emerging-app-container"
+	];
+	classes.map(value => {
+		if(currentValue===value){
+			document.body.classList.add(value);	
+		}else{
+			document.body.classList.remove(value);
+		}
+		return false;
+	});
+};
+
 const MobileAppPrimary = ({
 	anchor,
 	activeSection,
 	fullpageApi,
-	toggleTheme
 }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
 	if (activeSection.anchor === anchor) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
-		document.body.classList.remove("web-app-container");
-		document.body.classList.add("mobile-app-container");
+		navDotStyling("mobile-app-container");
 	}
 
 	function generate(element) {
@@ -271,11 +285,13 @@ const styles = StyleSheet.create({
 	},
 	project_title: {},
 	view_more_button: {
+		fontWeight: "600",
+		color:colors.gray.nine,
 		margin: "1rem 0rem",
 		padding: "0rem 2rem",
 		backgroundColor: colors.orange.regular,
 		":hover": {
-			backgroundColor: colors.orange.dark
+			backgroundColor: colors.orange.dark,
 		},
 		"@media (max-width: 769px)": {
 			justifyContent: "center"

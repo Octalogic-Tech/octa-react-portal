@@ -25,13 +25,28 @@ import webapp from "../../assets/images/projects/webapp.png";
 
 let isActive = false;
 
+const navDotStyling = (currentValue) => {
+	const classes = [
+		"web-app-container",
+		"mobile-app-container",
+		"emerging-app-container"
+	];
+	classes.map(value => {
+		if(currentValue===value){
+			document.body.classList.add(value);	
+		}else{
+			document.body.classList.remove(value);
+		}
+		return false;
+	});
+};
+
 const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
 	if (activeSection.anchor === anchor) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
-		document.body.classList.remove('mobile-app-container');
-		document.body.classList.add('web-app-container');
+		navDotStyling("web-app-container");
 	}
 
 	
@@ -174,10 +189,10 @@ const styles = StyleSheet.create({
 		borderLeftColor: colors.blue.dark,
 		borderBottom: "40rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
-			top: "-5rem",
-			borderTopWidth: "15rem",
-			borderLeftWidth: "15rem",
-			borderBottomWidth: "15rem"
+			top: "-4rem",
+			borderTopWidth: "12rem",
+			borderLeftWidth: "14em",
+			borderBottomWidth: "12rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
 			top: "-5rem",
@@ -197,9 +212,9 @@ const styles = StyleSheet.create({
 		borderLeftColor: colors.blue.regular,
 		borderBottom: "30rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
-			borderTopWidth: "10rem",
-			borderLeftWidth: "10rem",
-			borderBottomWidth: "10rem"
+			borderTopWidth: "8rem",
+			borderLeftWidth: "8rem",
+			borderBottomWidth: "8rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
 			borderTopWidth: "15rem",
@@ -218,10 +233,10 @@ const styles = StyleSheet.create({
 		borderLeftColor: colors.blue.light,
 		borderBottom: "20rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
-			top: "5rem",
-			borderTopWidth: "5rem",
-			borderLeftWidth: "5rem",
-			borderBottomWidth: "5rem"
+			top: "4rem",
+			borderTopWidth: "4rem",
+			borderLeftWidth: "4rem",
+			borderBottomWidth: "4rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
 			top: "5rem",
@@ -274,6 +289,7 @@ const styles = StyleSheet.create({
 	},
 	project_title: {},
 	view_more_button: {
+		fontWeight: "600",
 		margin: "1rem 0rem",
 		padding: "0rem 2rem",
 		backgroundColor: colors.blue.regular,

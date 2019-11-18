@@ -5,6 +5,9 @@
     --orange-light: #F9CEC2;
     --orange-regular: #F5B499;
     --orange-dark: #F47F6A;
+    --purple-light: #D985FF;
+    --purple-regular: #BF75E0;
+    --purple-dark: #8B55A3;
 }
 
 .web_app {
@@ -17,10 +20,20 @@
 	margin: auto !important;
 }
 
+.emerging_app {
+	max-width: 75% !important;
+	margin: auto !important;
+}
+
 @media only screen and (max-width: 600px) {
 	.mobile_app {
 		max-width: 25% !important;
-	}
+    }
+
+    .emerging_app {
+        max-width: 60% !important;
+        margin: auto !important;
+    }
 }
 
 @media only screen and (min-width: 601px) and (max-width: 769px) {
@@ -31,7 +44,12 @@
 
 	.mobile_app {
 		max-width: 20% !important;
-	}
+    }
+    
+    .emerging_app {
+        max-width: 50% !important;
+        margin: auto !important;
+    }
 }
 
 .web-app-container #fp-nav ul li a span {
@@ -42,6 +60,14 @@
     background: var(--blue-dark);
 }
 
+.emerging-app-container #fp-nav ul li a span {
+    background: var(--purple-dark);
+}
+
+.emerging-app-container #fp-nav ul li a.active span {
+    background: var(--purple-dark);
+}
+
 .mobile-app-container #fp-nav ul li a span {
     background: var(--orange-regular);
 }
@@ -49,3 +75,4 @@
 .mobile-app-container #fp-nav ul li a.active span {
     background: var(--orange-dark);
 }
+

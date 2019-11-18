@@ -1,3 +1,5 @@
+import colors from "./colors";
+
 const styles = {
     container : {
         width: "100%",
@@ -21,7 +23,8 @@ const styles = {
 		}
     },
     overline_icon:{
-        margin:"0rem 0.5rem"
+        margin:"0rem 0.5rem",
+        fill:colors.gray.five,
     },
 };
 

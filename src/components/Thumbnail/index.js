@@ -2,10 +2,14 @@ import React from "react";
 import { StyleSheet, css } from "aphrodite";
 import classNames from "classnames";
 
-// import colors from "../../styles/colors";
+import colors from "../../styles/colors";
 
-const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) => {
-    
+const Thumbnail = ({
+	fullpageApi,
+	component,
+	activeSection,
+	setSideBarOpen
+}) => {
 	let thumbnail = null;
 
 	const generateContent = () => {
@@ -14,7 +18,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_web)}>
 						<img
-							className={css(styles.thumbnail_image,styles.thumbnail_image_web)}
+							className={css(
+								styles.thumbnail_image,
+								styles.thumbnail_image_web
+							)}
 							src={component.media}
 							alt="project"
 						/>
@@ -25,7 +32,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_mobile)}>
 						<img
-							className={css(styles.thumbnail_image,styles.thumbnail_image_mobile)}
+							className={css(
+								styles.thumbnail_image,
+								styles.thumbnail_image_mobile
+							)}
 							src={component.media}
 							alt="project"
 						/>
@@ -36,7 +46,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_emerging)}>
 						<img
-							className={css(styles.thumbnail_image,styles.thumbnail_image_emerging)}
+							className={css(
+								styles.thumbnail_image,
+								styles.thumbnail_image_emerging
+							)}
 							src={component.media}
 							alt="project"
 						/>
@@ -47,7 +60,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper)}>
 						<img
-							className={css(styles.thumbnail_image,styles.thumbnail_image)}
+							className={css(
+								styles.thumbnail_image,
+								styles.thumbnail_image
+							)}
 							src={component.media}
 							alt="project"
 						/>
@@ -57,11 +73,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 		return thumbnail;
 	};
 
-	const moveToSection = (key) => {
+	const moveToSection = key => {
 		fullpageApi.moveTo(key);
 		setSideBarOpen(false);
 	};
-
 
 	// this.container.parentElement.scrollTop = 200;
 
@@ -72,7 +87,10 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 			}}
 			id={component.key}
 			data-menuanchor={component.key}
-			className={classNames(activeSection===component.key?"active":"",css(styles.thumbnail_link))}
+			className={classNames(
+				activeSection === component.key ? "active" : "",
+				css(styles.thumbnail_link)
+			)}
 		>
 			<div
 				className={classNames(
@@ -97,14 +115,18 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
 const styles = StyleSheet.create({
 	thumbnail_wrapper: {
 		margin: "2rem 1rem",
-		backgroundColor: "rgba(5, 5, 5, 0.25)",
+		backgroundColor: "rgba(5, 5, 5, 0.20)",
 		borderRadius: "6px",
 		boxShadow:
-			"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"
+			"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+		":hover": {
+			border: "2px solid",
+			borderColor:colors.green.regular,
+		}
 	},
 	thumbnail_link: {
 		textDecoration: "none",
-		cursor:"pointer"
+		cursor: "pointer"
 	},
 	thumbnail_title: {
 		fontSize: "1.2rem",
@@ -138,8 +160,8 @@ const styles = StyleSheet.create({
 		borderRadius: "6px 6px 0 0",
 		width: "100%"
 	},
-	thumbnail_image:{
-		borderRadius: "6px 6px 0 0",
+	thumbnail_image: {
+		borderRadius: "6px 6px 0 0"
 	},
 	thumbnail_image_web: {
 		width: "100%"

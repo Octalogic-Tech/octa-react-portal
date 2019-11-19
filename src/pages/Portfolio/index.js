@@ -56,6 +56,7 @@ const data = {
 
 const Portfolio = ({ toggleTheme, currentTheme }) => {
 	const [activeSection, setActiveSection] = useState("landing");
+	const [activeSectionType, setActiveSectionType] = useState("");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
 	const currentThemeType = currentTheme.palette.type;
@@ -80,9 +81,8 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 					>
 						<WebAppPrimary
 							key={section.key}
-							anchor={section.key}
 							data={section}
-							activeSection={activeSection}
+							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
 						/>
 					</div>
@@ -97,9 +97,8 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 					>
 						<MobileAppPrimary
 							key={section.key}
-							anchor={section.key}
 							data={section}
-							activeSection={activeSection}
+							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
 						/>
 					</div>
@@ -114,9 +113,8 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 					>
 						<EmergingAppPrimary
 							key={section.key}
-							anchor={section.key}
 							data={section}
-							activeSection={activeSection}
+							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
 						/>
 					</div>
@@ -260,7 +258,12 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 				normalScrollElements={"#right-sidebar"}
 				menu={"#menu"}
 				onLeave={(origin, destination, direction) => {
-					setActiveSection(destination);
+					data.components.forEach((item, index)=>{
+						if(destination.anchor===item.key){
+							setActiveSectionType(item.category);
+						}
+					});
+					
 				}}
 				render={({ state, fullpageApi, onLeave }) => {
 					setFullPageApi(fullpageApi);

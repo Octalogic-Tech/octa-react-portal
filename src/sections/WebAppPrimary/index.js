@@ -41,9 +41,9 @@ const navDotStyling = (currentValue) => {
 	});
 };
 
-const WebAppPrimary = ({ anchor, data, activeSection, fullpageApi }) => {
+const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
-	if (activeSection.anchor === anchor) {
+	if (activeSection === data.category) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
 		navDotStyling("web-app-container");

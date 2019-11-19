@@ -76,6 +76,14 @@
     background: var(--orange-dark);
 }
 
-.active .thumbnail_wrapper{
-    border: 2px solid var(--blue-dark);
+.web-app-container .active .thumbnail_wrapper{
+    border: 5px solid var(--blue-dark);
+}
+
+.mobile-app-container .active .thumbnail_wrapper{
+    border: 5px solid var(--orange-dark);
+}
+
+.emerging-app-container .active .thumbnail_wrapper{
+    border: 5px solid var(--purple-dark);
 }

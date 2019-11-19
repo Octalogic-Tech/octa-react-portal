@@ -29,7 +29,7 @@ import webapp from "../../assets/images/projects/webapp.png";
 let isActive = false;
 
 const navDotStyling = (currentValue) => {
-	const classes = [
+    const classes = [
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"
@@ -45,13 +45,12 @@ const navDotStyling = (currentValue) => {
 };
 
 const EmergingAppPrimary = ({
-	anchor,
 	data,
 	activeSection,
 	fullpageApi,
 }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
-	if (activeSection.anchor === anchor) {
+	if (activeSection === data.category) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
 		navDotStyling("emerging-app-container");

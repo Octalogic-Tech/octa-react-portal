@@ -42,13 +42,12 @@ const navDotStyling = (currentValue) => {
 };
 
 const MobileAppPrimary = ({
-	anchor,
 	data,
 	activeSection,
 	fullpageApi,
 }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
-	if (activeSection.anchor === anchor) {
+	if (activeSection === data.category) {
 		// This allows us to run animations on first load of the section
 		isActive = true;
 		navDotStyling("mobile-app-container");

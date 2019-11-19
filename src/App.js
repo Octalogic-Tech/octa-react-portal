@@ -7,7 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 const App = () => {
 	const [theme, setTheme] = useState({
 		palette: {
-			type: "light"
+			type: "dark"
 		}
 	});
 

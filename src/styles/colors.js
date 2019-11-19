@@ -14,6 +14,16 @@ const colors = {
         regular:"#BF75E0",
         light:"#D985FF",
     },
+    pink:{
+        dark:"#f22bf2",
+        regular:"#ff5eff",
+        light:"#fc99fc",
+    },
+    green:{
+        dark:"#036D19",
+        regular:"#2ECC40",
+        light:"#8CD867",
+    },
     white:"#ffffff",
     black:"#000000",
     gray:{

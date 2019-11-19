@@ -41,7 +41,7 @@ const navDotStyling = (currentValue) => {
 	});
 };
 
-const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
+const WebAppPrimary = ({ anchor, data, activeSection, fullpageApi }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
 	if (activeSection.anchor === anchor) {
 		// This allows us to run animations on first load of the section
@@ -115,7 +115,7 @@ const WebAppPrimary = ({ anchor, activeSection, fullpageApi, toggleTheme }) => {
 						gutterBottom
 						className={css(styles.technology_wrapper)}
 					>
-						{faker.commerce.productName()}
+						{data.name}
 					</Typography>
 					<div className={css(responsive.hide_sm_down)}>
 						<Typography variant="body1" gutterBottom>

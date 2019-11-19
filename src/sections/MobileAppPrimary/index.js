@@ -43,6 +43,7 @@ const navDotStyling = (currentValue) => {
 
 const MobileAppPrimary = ({
 	anchor,
+	data,
 	activeSection,
 	fullpageApi,
 }) => {
@@ -123,7 +124,7 @@ const MobileAppPrimary = ({
 						gutterBottom
 						className={css(styles.technology_wrapper)}
 					>
-						{faker.commerce.productName()}
+						{data.name}
 					</Typography>
 					<div className={css(responsive.hide_sm_down)}>
 						<Typography variant="body1" gutterBottom>

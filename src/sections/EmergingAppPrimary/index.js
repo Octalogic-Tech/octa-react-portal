@@ -46,6 +46,7 @@ const navDotStyling = (currentValue) => {
 
 const EmergingAppPrimary = ({
 	anchor,
+	data,
 	activeSection,
 	fullpageApi,
 }) => {
@@ -129,7 +130,7 @@ const EmergingAppPrimary = ({
 						gutterBottom
 						className={css(styles.technology_wrapper)}
 					>
-						{faker.commerce.productName()}
+						{data.name}
 					</Typography>
 					<div className={css(responsive.hide_sm_down)}>
 						<Typography variant="body1" gutterBottom>

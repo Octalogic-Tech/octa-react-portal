@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
+import { useLocation } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
+import faker from "faker";
 import Icon from "@mdi/react";
 import { mdiMenuOpen, mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
 
@@ -11,154 +13,241 @@ import WebAppPrimary from "../../sections/WebAppPrimary";
 import MobileAppPrimary from "../../sections/MobileAppPrimary";
 import EmergingAppPrimary from "../../sections/EmergingAppPrimary";
 
-import Button from "@material-ui/core/Button";
+import Thumbnail from "../../components/Thumbnail";
+
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
+
+import mobileapp from "../../assets/images/projects/mobileapp.png";
+import webapp from "../../assets/images/projects/webapp.png";
 
 const data = {
 	name: "John",
-	projects: [
+	components: [
 		{
-			name: "Project 1",
-			key: "project-1",
-			slides: [
-				{
-					name: "Slide 1"
-				},
-				{
-					name: "Slide 2"
-				}
-			]
+			_id: faker.random.uuid(),
+			category: "Web",
+			name: "Refined Concrete Sausages",
+			key: "refined-concrete-sausages",
+			media: webapp
 		},
 		{
-			name: "Project 2",
-			key: "project-2",
-			slides: [
-				{
-					name: "Slide 1"
-				}
-			]
+			_id: faker.random.uuid(),
+			category: "Mobile",
+			name: "Unbranded Concrete Hat",
+			key: "unbranded-concrete-hat",
+			media: mobileapp
+		},
+		{
+			_id: faker.random.uuid(),
+			category: "Emerging",
+			name: "Sleek Metal Keyboard",
+			key: "sleek-metal-keyboard",
+			media: webapp
+		},
+		{
+			_id: faker.random.uuid(),
+			category: "Mobile",
+			name: "Pretty Landing Page",
+			key: "pretty-landing-page",
+			media: mobileapp
 		}
 	]
 };
 
 const Portfolio = ({ toggleTheme, currentTheme }) => {
-	const [activeSection, setActiveSection] = useState(data.projects[0].key);
+	const [activeSection, setActiveSection] = useState("landing");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
+	const [fullPageApi, setFullPageApi] = useState(false);
 	const currentThemeType = currentTheme.palette.type;
-
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-	const renderSection = section => {
-		return (
-			<div className="section" key={section.key} anchor={section.key}>
-				{section.slides.map((slide, index) => {
-					return renderSlide(section, slide, index);
-				})}
-			</div>
-		);
-	};
+	const section = useLocation().hash.slice(1);
+	if (section) {
+		if (section !== activeSection) {
+			setActiveSection(section);
+		}
+	}
 
-	const renderSlide = (section, slide, index) => {
-		return (
-			<div className="slide" key={index}>
-				<Button variant="contained" color="primary">
-					{slide.name}
-				</Button>
-				<p>{section.name}</p>
-				<p>{slide.name}</p>
-			</div>
-		);
+	const renderSection = (section, fullpageApi) => {
+		let component = null;
+		switch (section.category) {
+			case "Web":
+				component = (
+					<div
+						className="section"
+						key={section.key}
+						anchor={section.key}
+					>
+						<WebAppPrimary
+							key={section.key}
+							anchor={section.key}
+							data={section}
+							activeSection={activeSection}
+							fullpageApi={fullpageApi}
+						/>
+					</div>
+				);
+				break;
+			case "Mobile":
+				component = (
+					<div
+						className="section"
+						key={section.key}
+						anchor={section.key}
+					>
+						<MobileAppPrimary
+							key={section.key}
+							anchor={section.key}
+							data={section}
+							activeSection={activeSection}
+							fullpageApi={fullpageApi}
+						/>
+					</div>
+				);
+				break;
+			case "Emerging":
+				component = (
+					<div
+						className="section"
+						key={section.key}
+						anchor={section.key}
+					>
+						<EmergingAppPrimary
+							key={section.key}
+							anchor={section.key}
+							data={section}
+							activeSection={activeSection}
+							fullpageApi={fullpageApi}
+						/>
+					</div>
+				);
+				break;
+			default:
+				component = "Saturday";
+		}
+		return component;
 	};
 
 	const getAnchors = data => {
 		let anchors = [];
-		anchors.push("landing-1");
-		anchors.push("web-app-primary");
-		anchors.push("mobile-app-primary");
-		anchors.push("emerging-app-primary");
-		data.projects.forEach(function(project) {
+		anchors.push("landing");
+		data.components.forEach(function(project) {
 			anchors.push(project.key);
 		});
 		return anchors;
 	};
 
-	const Menu = () => (
-		<div className={css(styles.header)}>
-			<div className={css(styles.header_content)}>
-				{currentThemeType === "dark" ? (
-					<Icon
-						className={css(
-							styles.header_icon,
-							styles.header_icon_dark
-						)}
-						path={mdiWhiteBalanceSunny}
-						onClick={() => {
-							toggleTheme();
-						}}
-						title="React"
-						size={1.5}
-					/>
-				) : (
-					<Icon
-						className={css(
-							styles.header_icon,
-							styles.header_icon_light
-						)}
-						path={mdiWeatherNight}
-						onClick={() => {
-							toggleTheme();
-						}}
-						title="React"
-						size={1.5}
-					/>
-				)}
-
-				<Icon
-					className={css(
-						styles.header_icon,
-						currentThemeType === "dark"
-							? styles.header_icon_dark
-							: styles.header_icon_light
+	const Menu = fullpageApi => {
+		return (
+			<div className={css(styles.header)}>
+				<div className={css(styles.header_content)}>
+					{currentThemeType === "dark" ? (
+						<Icon
+							className={css(
+								styles.header_icon,
+								styles.header_icon_dark
+							)}
+							path={mdiWhiteBalanceSunny}
+							onClick={() => {
+								toggleTheme();
+							}}
+							title="React"
+							size={1.5}
+						/>
+					) : (
+						<Icon
+							className={css(
+								styles.header_icon,
+								styles.header_icon_light
+							)}
+							path={mdiWeatherNight}
+							onClick={() => {
+								toggleTheme();
+							}}
+							title="React"
+							size={1.5}
+						/>
 					)}
-					path={mdiMenuOpen}
-					onClick={() => {
+
+					<Icon
+						className={css(
+							styles.header_icon,
+							currentThemeType === "dark"
+								? styles.header_icon_dark
+								: styles.header_icon_light
+						)}
+						path={mdiMenuOpen}
+						onClick={() => {
+							setSideBarOpen(true);
+							navBarScroll();
+						}}
+						title="Menu Open"
+						size={1.5}
+					/>
+				</div>
+				<SwipeableDrawer
+					id="right-sidebar"
+					anchor="right"
+					open={isSideBarOpen}
+					onClose={() => {
+						setSideBarOpen(false);
+					}}
+					onOpen={() => {
 						setSideBarOpen(true);
+						navBarScroll();
 					}}
-					title="Menu Open"
-					size={1.5}
-				/>
-			</div>
-			<SwipeableDrawer
-				anchor="right"
-				open={isSideBarOpen}
-				onClose={() => {
-					setSideBarOpen(false);
-				}}
-				onOpen={() => {
-					setSideBarOpen(true);
-				}}
-				disableBackdropTransition={!iOS}
-				disableDiscovery={iOS}
-			>
-				<p>Side List</p>
-				<Button
-					variant="contained"
-					color="primary"
-					onClick={() => {
-						
-						/* fullpageApi.moveSectionDown(); */
-						
-					}}
+					disableDiscovery={iOS}
 				>
-					Scroll Down
-				</Button>
-			</SwipeableDrawer>
-		</div>
-	);
+					<div id="menu" className={css(styles.sidebar)}>
+						{fullPageApi ? (
+							<Fragment>
+								<Thumbnail
+									fullpageApi={fullPageApi}
+									key={faker.random.uuid()}
+									activeSection={activeSection}
+									setSideBarOpen={setSideBarOpen}
+									component={{
+										_id: faker.random.uuid(),
+										category: "Web",
+										name: "Landing",
+										key: "landing",
+										media: webapp
+									}}
+								/>
+								{data.components.map((component, index) => {
+									return (
+										<Thumbnail
+											fullpageApi={fullPageApi}
+											key={component._id}
+											activeSection={activeSection}
+											setSideBarOpen={setSideBarOpen}
+											component={component}
+										/>
+									);
+								})}
+							</Fragment>
+						) : (
+							<Fragment></Fragment>
+						)}
+					</div>
+				</SwipeableDrawer>
+			</div>
+		);
+	};
+
+	const navBarScroll = () =>{
+		setTimeout(function(){ 
+			const element = document.getElementById(activeSection);
+			element.scrollIntoView({behavior: 'smooth'});
+		 }, 100);
+		
+	}
+
+
 
 	return (
 		<Fragment>
-			<Menu />
+			<Menu fullpageApi={fullPageApi} />
 			<ReactFullpage
 				licenseKey={"YOUR_KEY_HERE"}
 				scrollingSpeed={1000}
@@ -168,46 +257,25 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 				slidesNavigation={true}
 				controlArrows={false}
 				anchors={getAnchors(data)}
+				normalScrollElements={"#right-sidebar"}
+				menu={"#menu"}
 				onLeave={(origin, destination, direction) => {
 					setActiveSection(destination);
 				}}
 				render={({ state, fullpageApi, onLeave }) => {
+					setFullPageApi(fullpageApi);
 					return (
 						<ReactFullpage.Wrapper>
 							<div className="section">
 								<Landing
-									key={"landing-1"}
-									anchor={"landing-1"}
+									key={"landing"}
+									anchor={"landing"}
 									fullpageApi={fullpageApi}
 									toggleTheme={toggleTheme}
 								/>
 							</div>
-							<div className="section">
-								<WebAppPrimary
-									key={"web-app-primary"}
-									anchor={"web-app-primary"}
-									activeSection={activeSection}
-									fullpageApi={fullpageApi}
-								/>
-							</div>
-							<div className="section">
-								<MobileAppPrimary
-									key={"mobile-app-primary"}
-									anchor={"mobile-app-primary"}
-									activeSection={activeSection}
-									fullpageApi={fullpageApi}
-								/>
-							</div>
-							<div className="section">
-								<EmergingAppPrimary
-									key={"emerging-app-primary"}
-									anchor={"emerging-app-primary"}
-									activeSection={activeSection}
-									fullpageApi={fullpageApi}
-								/>
-							</div>
-							{data.projects.map((project, index) => {
-								return renderSection(project);
+							{data.components.map((component, index) => {
+								return renderSection(component, fullpageApi);
 							})}
 						</ReactFullpage.Wrapper>
 					);
@@ -238,6 +306,15 @@ const styles = StyleSheet.create({
 	},
 	header_icon_light: {
 		fill: colors.gray.six
+	},
+	sidebar: {
+		width: "25rem",
+		"@media only screen and (max-width: 600px)": {
+			width: "15rem"
+		},
+		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
+			width: "20rem"
+		}
 	}
 });
 

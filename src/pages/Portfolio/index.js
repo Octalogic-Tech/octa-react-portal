@@ -1,8 +1,6 @@
 import React, { useState, Fragment } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
-import { useLocation } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
-import faker from "faker";
 import Icon from "@mdi/react";
 import { mdiMenuOpen, mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
 
@@ -17,57 +15,13 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
-import mobileapp from "../../assets/images/projects/mobileapp.png";
-import webapp from "../../assets/images/projects/webapp.png";
-
-const data = {
-	name: "John",
-	components: [
-		{
-			_id: faker.random.uuid(),
-			category: "Web",
-			name: "Refined Concrete Sausages",
-			key: "refined-concrete-sausages",
-			media: webapp
-		},
-		{
-			_id: faker.random.uuid(),
-			category: "Mobile",
-			name: "Unbranded Concrete Hat",
-			key: "unbranded-concrete-hat",
-			media: mobileapp
-		},
-		{
-			_id: faker.random.uuid(),
-			category: "Emerging",
-			name: "Sleek Metal Keyboard",
-			key: "sleek-metal-keyboard",
-			media: webapp
-		},
-		{
-			_id: faker.random.uuid(),
-			category: "Mobile",
-			name: "Pretty Landing Page",
-			key: "pretty-landing-page",
-			media: mobileapp
-		}
-	]
-};
-
-const Portfolio = ({ toggleTheme, currentTheme }) => {
+const Portfolio = ({ toggleTheme, currentTheme, data }) => {
 	const [activeSection, setActiveSection] = useState("landing");
 	const [activeSectionType, setActiveSectionType] = useState("");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
-	const currentThemeType = currentTheme.palette.type;
+    const currentThemeType = currentTheme.palette.type;
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-	const section = useLocation().hash.slice(1);
-	if (section) {
-		if (section !== activeSection) {
-			setActiveSection(section);
-		}
-	}
 
 	const renderSection = (section, fullpageApi) => {
 		let component = null;
@@ -201,15 +155,15 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 							<Fragment>
 								<Thumbnail
 									fullpageApi={fullPageApi}
-									key={faker.random.uuid()}
+									key={data._id}
 									activeSection={activeSection}
 									setSideBarOpen={setSideBarOpen}
 									component={{
-										_id: faker.random.uuid(),
+										_id: data._id,
 										category: "Web",
 										name: "Landing",
 										key: "landing",
-										media: webapp
+										media: data.media
 									}}
 								/>
 								{data.components.map((component, index) => {
@@ -255,14 +209,19 @@ const Portfolio = ({ toggleTheme, currentTheme }) => {
 				slidesNavigation={true}
 				controlArrows={false}
 				anchors={getAnchors(data)}
+				lockAnchors={true}
 				normalScrollElements={"#right-sidebar"}
 				menu={"#menu"}
 				onLeave={(origin, destination, direction) => {
 					data.components.forEach((item, index)=>{
 						if(destination.anchor===item.key){
 							setActiveSectionType(item.category);
+							setActiveSection(destination.anchor);
 						}
 					});
+					if(destination.anchor==="landing"){
+						setActiveSection(destination.anchor);
+					}
 					
 				}}
 				render={({ state, fullpageApi, onLeave }) => {

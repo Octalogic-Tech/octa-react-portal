@@ -11,7 +11,6 @@ const Thumbnail = ({
 	setSideBarOpen
 }) => {
 	let thumbnail = null;
-
 	const generateContent = () => {
 		switch (component.category) {
 			case "Web":

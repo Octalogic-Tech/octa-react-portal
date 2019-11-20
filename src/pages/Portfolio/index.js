@@ -15,12 +15,13 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
-const Portfolio = ({ toggleTheme, currentTheme, data }) => {
-	const [activeSection, setActiveSection] = useState("landing");
+const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
+    const [activeSection, setActiveSection] = useState("landing");
 	const [activeSectionType, setActiveSectionType] = useState("");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
-    const currentThemeType = currentTheme.palette.type;
+    // const currentThemeType = currentTheme.palette.type;
+    const currentThemeType = currentTheme;
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	const renderSection = (section, fullpageApi) => {
@@ -102,6 +103,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data }) => {
 							path={mdiWhiteBalanceSunny}
 							onClick={() => {
 								toggleTheme();
+								switchTheme();
 							}}
 							title="React"
 							size={1.5}
@@ -115,6 +117,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data }) => {
 							path={mdiWeatherNight}
 							onClick={() => {
 								toggleTheme();
+								switchTheme();
 							}}
 							title="React"
 							size={1.5}

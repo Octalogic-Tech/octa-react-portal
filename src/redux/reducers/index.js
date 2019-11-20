@@ -6,12 +6,13 @@ import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import history from "../history";
 
 import portfolio from "./portfolio";
+import theme from "./theme";
 
 const rootPersistConfig = {
 	key: "root",
 	storage: storage,
 	stateReconciler: autoMergeLevel2,
-	blacklist: ["router", "portfolio"]
+	blacklist: ["router", "portfolio", "theme"]
 };
 
 // const authPersistConfig = {
@@ -22,7 +23,8 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
 	router: connectRouter(history),
-	portfolio: portfolio
+	portfolio: portfolio,
+	theme: theme
 });
 
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);

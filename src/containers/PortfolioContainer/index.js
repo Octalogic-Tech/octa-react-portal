@@ -10,16 +10,22 @@ import {
 	selectPortfolioDataStatus
 } from "../../redux/selectors/portfolio";
 
+import { doThemeSwitch } from "../../redux/actionCreators/theme";
+import { selectCurrentTheme } from "../../redux/selectors/theme";
+
 const PortfolioContainer = ({
 	ownProps,
 	fetchPortfolio,
 	portfolioData,
-	portfolioDataStatus
+	portfolioDataStatus,
+	switchTheme,
+	currentTheme
 }) => {
 	let { key } = useParams();
 
 	useEffect(() => {
 		fetchPortfolio({ key: key });
+		// currentTheme={ownProps.currentTheme}
 	}, [fetchPortfolio, key]);
 
 	return (
@@ -29,8 +35,9 @@ const PortfolioContainer = ({
 			) : (
 				<Portfolio
 					toggleTheme={ownProps.toggleTheme}
-					currentTheme={ownProps.currentTheme}
 					data={portfolioData}
+					switchTheme={switchTheme}
+					currentTheme={currentTheme}
 				/>
 			)}
 		</Fragment>
@@ -39,7 +46,8 @@ const PortfolioContainer = ({
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchPortfolio: payload => dispatch(doFetchPortfolio(payload))
+		fetchPortfolio: payload => dispatch(doFetchPortfolio(payload)),
+		switchTheme: payload => dispatch(doThemeSwitch(payload))
 	};
 };
 
@@ -47,7 +55,8 @@ const mapStateToProps = (state, ownProps) => {
 	return {
 		ownProps: ownProps,
 		portfolioData: selectPortfolioData(state),
-		portfolioDataStatus: selectPortfolioDataStatus(state)
+		portfolioDataStatus: selectPortfolioDataStatus(state),
+		currentTheme: selectCurrentTheme(state)
 	};
 };
 

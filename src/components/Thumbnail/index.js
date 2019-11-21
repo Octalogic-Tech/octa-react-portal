@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
 			"0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
 		":hover": {
 			border: "2px solid",
-			borderColor:colors.green.regular,
+			borderColor:colors.gray.five,
 		}
 	},
 	thumbnail_link: {

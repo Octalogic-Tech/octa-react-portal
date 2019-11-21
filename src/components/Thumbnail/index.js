@@ -128,19 +128,26 @@ const styles = StyleSheet.create({
 		cursor: "pointer"
 	},
 	thumbnail_title: {
-		fontSize: "1.2rem",
+		fontSize: "0.9rem",
 		margin: "0rem",
 		fontWeight: "700",
 		"@media only screen and (max-width: 600px)": {
-			fontSize: "0.8rem"
+			fontSize: "0.7rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
-			fontSize: "1rem"
+			fontSize: "0.8rem"
 		}
 	},
 	thumbnail_subtitle: {
+		fontSize: "0.8rem",
 		margin: "0rem",
-		fontWeight: "300"
+		fontWeight: "300",
+		"@media only screen and (max-width: 600px)": {
+			fontSize: "0.6rem"
+		},
+		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
+			fontSize: "0.7rem"
+		}
 	},
 	thumbnail_text: {
 		padding: "0.5rem 1rem"

@@ -37,6 +37,9 @@ const colors = {
         "eight":"#323232",
         "nine":"#191919",
     },
+    octalogic:{
+        "base":"#87E4C7",
+    }
 
 }
 

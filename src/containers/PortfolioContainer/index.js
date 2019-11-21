@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import Portfolio from "../../pages/Portfolio";
+import Loading from "../../pages/Loading";
 
 import { doFetchPortfolio } from "../../redux/actionCreators/portfolio";
 import {
@@ -31,7 +32,7 @@ const PortfolioContainer = ({
 	return (
 		<Fragment>
 			{portfolioDataStatus ? (
-				<span>No loaded</span>
+				<Loading />
 			) : (
 				<Portfolio
 					toggleTheme={ownProps.toggleTheme}

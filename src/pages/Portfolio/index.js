@@ -16,12 +16,12 @@ import Thumbnail from "../../components/Thumbnail";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
-    const [activeSection, setActiveSection] = useState("landing");
+	const [activeSection, setActiveSection] = useState("landing");
 	const [activeSectionType, setActiveSectionType] = useState("");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
-    // const currentThemeType = currentTheme.palette.type;
-    const currentThemeType = currentTheme;
+	// const currentThemeType = currentTheme.palette.type;
+	const currentThemeType = currentTheme;
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	const renderSection = (section, fullpageApi) => {
@@ -81,13 +81,16 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 		return component;
 	};
 
-	const getAnchors = data => {
+	const getNavData = data => {
 		let anchors = [];
+		let navigationTooltips = [];
 		anchors.push("landing");
+		navigationTooltips.push("Landing");
 		data.components.forEach(function(project) {
 			anchors.push(project.key);
+			navigationTooltips.push(project.name);
 		});
-		return anchors;
+		return { anchors, navigationTooltips };
 	};
 
 	const Menu = fullpageApi => {
@@ -190,15 +193,12 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 		);
 	};
 
-	const navBarScroll = () =>{
-		setTimeout(function(){ 
+	const navBarScroll = () => {
+		setTimeout(function() {
 			const element = document.getElementById(activeSection);
-			element.scrollIntoView({behavior: 'smooth'});
-		 }, 100);
-		
-	}
-
-
+			element.scrollIntoView({ behavior: "smooth" });
+		}, 100);
+	};
 
 	return (
 		<Fragment>
@@ -211,21 +211,21 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				navigationPosition={"right"}
 				slidesNavigation={true}
 				controlArrows={false}
-				anchors={getAnchors(data)}
+				anchors={getNavData(data).anchors}
+				/* navigationTooltips={getNavData(data).navigationTooltips} */
 				lockAnchors={true}
 				normalScrollElements={"#right-sidebar"}
 				menu={"#menu"}
 				onLeave={(origin, destination, direction) => {
-					data.components.forEach((item, index)=>{
-						if(destination.anchor===item.key){
+					data.components.forEach((item, index) => {
+						if (destination.anchor === item.key) {
 							setActiveSectionType(item.category);
 							setActiveSection(destination.anchor);
 						}
 					});
-					if(destination.anchor==="landing"){
+					if (destination.anchor === "landing") {
 						setActiveSection(destination.anchor);
 					}
-					
 				}}
 				render={({ state, fullpageApi, onLeave }) => {
 					setFullPageApi(fullpageApi);
@@ -273,12 +273,12 @@ const styles = StyleSheet.create({
 		fill: colors.gray.six
 	},
 	sidebar: {
-		width: "25rem",
+		width: "18rem",
 		"@media only screen and (max-width: 600px)": {
 			width: "15rem"
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
-			width: "20rem"
+			width: "17rem"
 		}
 	}
 });

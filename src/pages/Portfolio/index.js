@@ -223,7 +223,9 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 							setActiveSection(destination.anchor);
 						}
 					});
+					
 					if (destination.anchor === "landing") {
+						setActiveSectionType(destination.anchor);
 						setActiveSection(destination.anchor);
 					}
 				}}
@@ -235,6 +237,9 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 								<Landing
 									key={"landing"}
 									anchor={"landing"}
+									data={{category:"landing"}}
+									activeSection={activeSectionType}
+									currentThemeType={currentThemeType}
 									fullpageApi={fullpageApi}
 									toggleTheme={toggleTheme}
 								/>

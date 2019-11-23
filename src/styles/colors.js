@@ -39,6 +39,7 @@ const colors = {
     },
     octalogic:{
         "base":"#87E4C7",
+        "dark":"#74c9ae",
     }
 
 }

@@ -18,7 +18,7 @@ const portfolio = handleActions(
 			state,
 			{ payload: { data } }
 		) => {
-			return { ...state, isFetching: false, portfolioData: data };
+			return { ...state, isFetching: false, portfolioData: data.payload };
 		},
 		[actionCreators.doFetchPortfolioFailure]: (
 			state,

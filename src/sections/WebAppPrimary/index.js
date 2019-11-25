@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { slideInLeft } from "react-animations";
-import faker from "faker";
 import Icon from "@mdi/react";
 import { mdiReact } from "@mdi/js";
 
@@ -13,28 +13,22 @@ import responsive from "../../styles/responsive";
 
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import Fab from "@material-ui/core/Fab";
 import "../../styles/overrides.css";
 
-import webapp from "../../assets/images/projects/webapp.png";
 
 let isActive = false;
 
-const navDotStyling = (currentValue) => {
+const navDotStyling = currentValue => {
 	const classes = [
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"
 	];
 	classes.map(value => {
-		if(currentValue===value){
-			document.body.classList.add(value);	
-		}else{
+		if (currentValue === value) {
+			document.body.classList.add(value);
+		} else {
 			document.body.classList.remove(value);
 		}
 		return false;
@@ -49,18 +43,10 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 		navDotStyling("web-app-container");
 	}
 
-	
-	
-
-	function generate(element) {
-		return [0, 1, 2].map((value, index) => (
-			<ListItem  key={index}>
-				<ListItemIcon>
-					<KeyboardArrowRightIcon />
-				</ListItemIcon>
-				<ListItemText primary={faker.lorem.sentences(2)} />
-			</ListItem>
-		));
+	function createMarkup(html) {
+		return {
+			__html: html
+		};
 	}
 
 	return (
@@ -96,19 +82,18 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 						>
 							<div className="screen">
 								<img
-								className={css(styles.frame_image)}
-								src={webapp}
-								alt="project"
-							/>
+									className={css(styles.frame_image)}
+									src={data.cover.link}
+									alt="project"
+								/>
 							</div>
 							<div className="button"></div>
-							
 						</div>
 					</div>
 				</div>
 				<div className={css(styles.details_wrapper)}>
 					<Typography variant="overline" display="block" gutterBottom>
-						Web
+						{data.category.name}
 					</Typography>
 					<Typography
 						variant="h4"
@@ -117,29 +102,29 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 					>
 						{data.name}
 					</Typography>
-					<div className={css(responsive.hide_sm_down)}>
-						<Typography variant="body1" gutterBottom>
-							{faker.lorem.paragraph(8)}
-						</Typography>
-					</div>
-					<div className={css(responsive.hide_md_up)}>
-						<Typography variant="body1" gutterBottom>
-							{faker.lorem.paragraph(2)}
-						</Typography>
-					</div>
+					<div
+						dangerouslySetInnerHTML={createMarkup(data.description)}
+						className={css(responsive.hide_sm_down)}
+					></div>
+					<div
+						dangerouslySetInnerHTML={createMarkup(data.summary)}
+						className={css(responsive.hide_md_up)}
+					></div>
 
-					<div className={css(responsive.hide_sm_down)}>
-						<List>{generate()}</List>
-					</div>
 					<div className={css(styles.technology_wrapper)}>
-						<Fab
-							variant="extended"
-							color="primary"
-							aria-label="View More"
-							className={css(styles.view_more_button)}
+						<Link
+							to={"/project/" + data.project.id}
+							className={"link"}
 						>
-							View More
-						</Fab>
+							<Fab
+								variant="extended"
+								color="primary"
+								aria-label="View More"
+								className={css(styles.view_more_button)}
+							>
+								View More
+							</Fab>
+						</Link>
 					</div>
 					<div className={css(styles.technology_wrapper)}>
 						<div className={css(styles.technology_circle)}>
@@ -176,7 +161,7 @@ const styles = StyleSheet.create({
 		top: "0",
 		height: "100%",
 		width: "100%",
-        overflow: "hidden",
+		overflow: "hidden"
 	},
 	triangle_large: {
 		position: "absolute",
@@ -269,7 +254,7 @@ const styles = StyleSheet.create({
 		}
 	},
 	frame_image: {
-		width: "100%",
+		width: "100%"
 	},
 	details_wrapper: {
 		padding: "2rem",

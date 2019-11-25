@@ -2,6 +2,7 @@ import React, { useState, Fragment } from "react";
 import ReactFullpage from "@fullpage/react-fullpage";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
+import changeCase from 'change-case';
 import { mdiMenuOpen, mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
 
 import colors from "../../styles/colors";
@@ -16,6 +17,7 @@ import Thumbnail from "../../components/Thumbnail";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
+    console.log("TCL: Portfolio -> data", data);
 	const [activeSection, setActiveSection] = useState("landing");
 	const [activeSectionType, setActiveSectionType] = useState("");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -26,8 +28,8 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 
 	const renderSection = (section, fullpageApi) => {
 		let component = null;
-		switch (section.category) {
-			case "Web":
+		switch (section.category.name) {
+			case "Web Development":
 				component = (
 					<div
 						className="section"
@@ -43,7 +45,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 					</div>
 				);
 				break;
-			case "Mobile":
+			case "Mobile Development":
 				component = (
 					<div
 						className="section"
@@ -59,7 +61,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 					</div>
 				);
 				break;
-			case "Emerging":
+			case "Emerging Tech":
 				component = (
 					<div
 						className="section"
@@ -76,7 +78,20 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				);
 				break;
 			default:
-				component = "Saturday";
+				component = (
+					<div
+						className="section"
+						key={section.key}
+						anchor={section.key}
+					>
+						<WebAppPrimary
+							key={section.key}
+							data={section}
+							activeSection={activeSectionType}
+							fullpageApi={fullpageApi}
+						/>
+					</div>
+				);
 		}
 		return component;
 	};
@@ -87,7 +102,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 		anchors.push("landing");
 		navigationTooltips.push("Landing");
 		data.components.forEach(function(project) {
-			anchors.push(project.key);
+			anchors.push(changeCase.paramCase(project.key));
 			navigationTooltips.push(project.name);
 		});
 		return { anchors, navigationTooltips };
@@ -237,7 +252,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 								<Landing
 									key={"landing"}
 									anchor={"landing"}
-									data={{category:"landing"}}
+									data={data}
 									activeSection={activeSectionType}
 									currentThemeType={currentThemeType}
 									fullpageApi={fullpageApi}

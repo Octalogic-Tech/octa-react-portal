@@ -26,6 +26,9 @@ const styles = {
         margin:"0rem 0.5rem",
         fill:colors.gray.five,
     },
+    link:{
+        textDecoration:"none",
+    }
 };
 
 export default styles;

@@ -23,7 +23,7 @@ const navDotStyling = currentValue => {
 };
 
 const Landing = ({ currentThemeType, activeSection, data }) => {
-	if (activeSection === data.category) {
+	if (activeSection === "landing") {
 		navDotStyling("landing");
 	}
 
@@ -66,7 +66,7 @@ const Landing = ({ currentThemeType, activeSection, data }) => {
 								Hey
 							</p>
 							<p className={css(styles.greeting_main_name)}>
-								Tanushree
+								{data.title}
 							</p>
 						</div>
 						<div className={css(styles.icon_wrapper)}>
@@ -84,14 +84,7 @@ const Landing = ({ currentThemeType, activeSection, data }) => {
 				<div className={css(styles.content_description)}>
 					<div className={css(styles.description_wrapper)}>
 						<p className={css(styles.description_text)}>
-							Lorem ipsum dolor sit amet, consetetur sadipscing
-							elitr, sed diam nonumy eirmod tempor invidunt ut
-							labore et dolore magna aliquyam erat, sed diam
-							voluptua. At vero eos et accusam et justo duo
-							dolores et ea rebum. Stet clita kasd gubergren, no
-							sea takimata sanctus est Lorem ipsum dolor sit amet.
-							Lorem ipsum dolor sit amet, consetetur sadipscing
-							elitr, sed diam nonumy eirmod tempor.
+							{data.description}
 						</p>
 					</div>
 				</div>

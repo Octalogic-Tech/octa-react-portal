@@ -3,6 +3,7 @@ import { handleActions } from "redux-actions";
 import * as actionCreators from "../actionCreators/portfolio";
 
 import { simulatedPortfolioData } from "../simulators/portfolio";
+// import {  backendSimulated } from "../simulators/portfolio";
 
 const defaultState = {
 	portfolioData: {},
@@ -24,7 +25,7 @@ const portfolio = handleActions(
 			state,
 			{ payload: { message } }
 		) => {
-			const data = simulatedPortfolioData;
+			const data = simulatedPortfolioData.payload;
 			return { ...state, isFetching: false , portfolioData: data };
 		}
 	},

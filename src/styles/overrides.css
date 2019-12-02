@@ -1,13 +1,16 @@
 :root{
-    --blue-light: #87E3F9;
-    --blue-regular: #3EC4CD;
-    --blue-dark: #10ABB6;
+    --blue-light: #A1F8EB;
+    --blue-regular: #60E2CF;
+    --blue-dark: #24AAC4;
     --orange-light: #F9CEC2;
     --orange-regular: #F5B499;
     --orange-dark: #F47F6A;
     --purple-light: #D985FF;
     --purple-regular: #BF75E0;
     --purple-dark: #8B55A3;
+    --green-light: #81c784;
+    --green-regular: #4caf50;
+    --green-dark: #2e7d32;
 }
 
 .link{
@@ -57,11 +60,11 @@
 }
 
 .web-app-container #fp-nav ul li a span {
-    background: var(--blue-regular);
+    background: var(--green-regular);
 }
 
 .web-app-container #fp-nav ul li a.active span {
-    background: var(--blue-dark);
+    background: var(--green-dark);
 }
 
 .emerging-app-container #fp-nav ul li a span {
@@ -80,8 +83,17 @@
     background: var(--orange-dark);
 }
 
+
+.footer #fp-nav ul li a span {
+    background: var(--blue-regular);
+}
+
+.footer #fp-nav ul li a.active span {
+    background: var(--blue-dark);
+}
+
 .web-app-container .active .thumbnail_wrapper{
-    border: 5px solid var(--blue-dark);
+    border: 5px solid var(--green-dark);
 }
 
 .mobile-app-container .active .thumbnail_wrapper{
@@ -90,4 +102,9 @@
 
 .emerging-app-container .active .thumbnail_wrapper{
     border: 5px solid var(--purple-dark);
+}
+
+
+.footer .active .thumbnail_wrapper{
+    border: 5px solid var(--blue-dark);
 }

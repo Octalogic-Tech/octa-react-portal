@@ -4,6 +4,8 @@ import classNames from "classnames";
 
 import colors from "../../styles/colors";
 
+import landing from "../../assets/images/projects/webapp.png"
+
 const Thumbnail = ({
 	fullpageApi,
 	component,
@@ -11,9 +13,9 @@ const Thumbnail = ({
 	setSideBarOpen
 }) => {
 	let thumbnail = null;
-	const generateContent = () => {
-		switch (component.category) {
-			case "Web":
+    const generateContent = () => {
+		switch (component.category.name) {
+			case "Web Development":
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_web)}>
 						<img
@@ -21,13 +23,13 @@ const Thumbnail = ({
 								styles.thumbnail_image,
 								styles.thumbnail_image_web
 							)}
-							src={component.media}
+							src={component.cover.link}
 							alt="project"
 						/>
 					</div>
 				);
 				break;
-			case "Mobile":
+			case "Mobile Development":
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_mobile)}>
 						<img
@@ -35,13 +37,13 @@ const Thumbnail = ({
 								styles.thumbnail_image,
 								styles.thumbnail_image_mobile
 							)}
-							src={component.media}
+							src={component.cover.link}
 							alt="project"
 						/>
 					</div>
 				);
 				break;
-			case "Emerging":
+			case "Emerging Tech":
 				thumbnail = (
 					<div className={css(styles.thumbnail_wrapper_emerging)}>
 						<img
@@ -49,7 +51,7 @@ const Thumbnail = ({
 								styles.thumbnail_image,
 								styles.thumbnail_image_emerging
 							)}
-							src={component.media}
+							src={component.cover.link}
 							alt="project"
 						/>
 					</div>
@@ -57,13 +59,13 @@ const Thumbnail = ({
 				break;
 			default:
 				thumbnail = (
-					<div className={css(styles.thumbnail_wrapper)}>
+					<div className={css(styles.thumbnail_wrapper_landing)}>
 						<img
 							className={css(
 								styles.thumbnail_image,
-								styles.thumbnail_image
+								styles.thumbnail_image_landing
 							)}
-							src={component.media}
+							src={landing}
 							alt="project"
 						/>
 					</div>
@@ -81,13 +83,14 @@ const Thumbnail = ({
 
 	return (
 		<div
-			onClick={() => {
-				moveToSection(component.key);
+			onClick={() => {	
+				moveToSection(component.id);
 			}}
-			id={component.key}
-			data-menuanchor={component.key}
+			key={component.id}
+			id={component.id}
+			data-menuanchor={component.id}
 			className={classNames(
-				activeSection === component.key ? "active" : "",
+				activeSection === component.id ? "active" : "",
 				css(styles.thumbnail_link)
 			)}
 		>
@@ -103,7 +106,7 @@ const Thumbnail = ({
 						{component.name}
 					</p>
 					<p className={css(styles.thumbnail_subtitle)}>
-						{component.category}
+						{component.category.name}
 					</p>
 				</div>
 			</div>
@@ -166,8 +169,12 @@ const styles = StyleSheet.create({
 		borderRadius: "6px 6px 0 0",
 		width: "100%"
 	},
+	thumbnail_wrapper_landing: {
+		borderRadius: "6px 6px 0 0",
+		width: "100%"
+	},
 	thumbnail_image: {
-		borderRadius: "6px 6px 0 0"
+		borderRadius: "6px 6px 0 0",
 	},
 	thumbnail_image_web: {
 		width: "100%"
@@ -176,6 +183,9 @@ const styles = StyleSheet.create({
 		width: "40%"
 	},
 	thumbnail_image_emerging: {
+		width: "100%"
+	},
+	thumbnail_image_landing: {
 		width: "100%"
 	}
 });

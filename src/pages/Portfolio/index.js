@@ -8,6 +8,7 @@ import { mdiMenuOpen, mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
 import colors from "../../styles/colors";
 
 import Landing from "../../sections/Landing";
+import Footer from "../../sections/Footer";
 import WebAppPrimary from "../../sections/WebAppPrimary";
 import MobileAppPrimary from "../../sections/MobileAppPrimary";
 import EmergingAppPrimary from "../../sections/EmergingAppPrimary";
@@ -17,9 +18,8 @@ import Thumbnail from "../../components/Thumbnail";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
-    console.log("TCL: Portfolio -> data", data);
-	const [activeSection, setActiveSection] = useState("landing");
-	const [activeSectionType, setActiveSectionType] = useState("");
+    const [activeSection, setActiveSection] = useState("landing");
+	const [activeSectionType, setActiveSectionType] = useState("landing");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
 	// const currentThemeType = currentTheme.palette.type;
@@ -27,17 +27,17 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	const renderSection = (section, fullpageApi) => {
-		let component = null;
+        let component = null;
 		switch (section.category.name) {
 			case "Web Development":
 				component = (
 					<div
 						className="section"
-						key={section.key}
-						anchor={section.key}
+						key={section.id}
+						anchor={section.id}
 					>
 						<WebAppPrimary
-							key={section.key}
+							key={section.id}
 							data={section}
 							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
@@ -49,11 +49,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				component = (
 					<div
 						className="section"
-						key={section.key}
-						anchor={section.key}
+						key={section.id}
+						anchor={section.id}
 					>
 						<MobileAppPrimary
-							key={section.key}
+							key={section.id}
 							data={section}
 							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
@@ -65,11 +65,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				component = (
 					<div
 						className="section"
-						key={section.key}
-						anchor={section.key}
+						key={section.id}
+						anchor={section.id}
 					>
 						<EmergingAppPrimary
-							key={section.key}
+							key={section.id}
 							data={section}
 							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
@@ -81,11 +81,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				component = (
 					<div
 						className="section"
-						key={section.key}
-						anchor={section.key}
+						key={section.id}
+						anchor={section.id}
 					>
 						<WebAppPrimary
-							key={section.key}
+							key={section.id}
 							data={section}
 							activeSection={activeSectionType}
 							fullpageApi={fullpageApi}
@@ -102,9 +102,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 		anchors.push("landing");
 		navigationTooltips.push("Landing");
 		data.components.forEach(function(project) {
-			anchors.push(changeCase.paramCase(project.key));
+			anchors.push(changeCase.paramCase(project.id));
 			navigationTooltips.push(project.name);
 		});
+		anchors.push("footer");
+		navigationTooltips.push("Footer");
 		return { anchors, navigationTooltips };
 	};
 
@@ -176,11 +178,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 							<Fragment>
 								<Thumbnail
 									fullpageApi={fullPageApi}
-									key={data._id}
+									key={"landing"}
 									activeSection={activeSection}
 									setSideBarOpen={setSideBarOpen}
 									component={{
-										_id: data._id,
+										id: "landing",
 										category: "Web",
 										name: "Landing",
 										key: "landing",
@@ -190,14 +192,27 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 								{data.components.map((component, index) => {
 									return (
 										<Thumbnail
+											key={component.id}
 											fullpageApi={fullPageApi}
-											key={component._id}
 											activeSection={activeSection}
 											setSideBarOpen={setSideBarOpen}
 											component={component}
 										/>
 									);
 								})}
+								<Thumbnail
+									fullpageApi={fullPageApi}
+									key="footer"
+									activeSection={activeSection}
+									setSideBarOpen={setSideBarOpen}
+									component={{
+										id: "footer",
+										category: "Web",
+										name: "Footer",
+										key: "footer",
+										media: data.media
+									}}
+								/>
 							</Fragment>
 						) : (
 							<Fragment></Fragment>
@@ -211,7 +226,9 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 	const navBarScroll = () => {
 		setTimeout(function() {
 			const element = document.getElementById(activeSection);
-			element.scrollIntoView({ behavior: "smooth" });
+            if(element){
+				element.scrollIntoView({ behavior: "smooth" });
+			}
 		}, 100);
 	};
 
@@ -233,17 +250,18 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 				menu={"#menu"}
 				onLeave={(origin, destination, direction) => {
 					data.components.forEach((item, index) => {
-						if (destination.anchor === item.key) {
+						if (destination.anchor === item.id) {
 							setActiveSectionType(item.category);
 							setActiveSection(destination.anchor);
 						}
 					});
 					
-					if (destination.anchor === "landing") {
+					if (destination.anchor === "landing" || destination.anchor === "footer") {
 						setActiveSectionType(destination.anchor);
 						setActiveSection(destination.anchor);
 					}
 				}}
+                
 				render={({ state, fullpageApi, onLeave }) => {
 					setFullPageApi(fullpageApi);
 					return (
@@ -262,6 +280,17 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 							{data.components.map((component, index) => {
 								return renderSection(component, fullpageApi);
 							})}
+							<div className="section">
+								<Footer
+									key={"footer"}
+									anchor={"footer"}
+									data={data}
+									activeSection={activeSectionType}
+									currentThemeType={currentThemeType}
+									fullpageApi={fullpageApi}
+									toggleTheme={toggleTheme}
+								/>
+							</div>
 						</ReactFullpage.Wrapper>
 					);
 				}}

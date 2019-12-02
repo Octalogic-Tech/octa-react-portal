@@ -7,11 +7,15 @@ import base from "../../styles/base";
 import icon from "../../assets/images/icons/icon-loader.png";
 
 const navDotStyling = currentValue => {
+console.log("TCL: currentValue", currentValue)
 	const classes = [
+		"landing",
+		"footer",
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"
 	];
+	
 	classes.map(value => {
 		if (currentValue === value) {
 			document.body.classList.add(value);
@@ -23,7 +27,7 @@ const navDotStyling = currentValue => {
 };
 
 const Landing = ({ currentThemeType, activeSection, data }) => {
-	if (activeSection === "landing") {
+    if (activeSection === "landing") {
 		navDotStyling("landing");
 	}
 

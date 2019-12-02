@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
 		height: "0",
 		borderTop: "40rem solid transparent",
 		borderLeft: "40rem solid",
-		borderLeftColor: colors.blue.dark,
+		borderLeftColor: colors.green.dark,
 		borderBottom: "40rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
 			top: "-4rem",
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
 		height: "0",
 		borderTop: "30rem solid transparent",
 		borderLeft: "30rem solid ",
-		borderLeftColor: colors.blue.regular,
+		borderLeftColor: colors.green.regular,
 		borderBottom: "30rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
 			borderTopWidth: "8rem",
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
 		height: "0",
 		borderTop: "20rem solid transparent",
 		borderLeft: "20rem solid",
-		borderLeftColor: colors.blue.light,
+		borderLeftColor: colors.green.light,
 		borderBottom: "20rem solid transparent",
 		"@media only screen and (max-width: 600px)": {
 			top: "4rem",
@@ -277,9 +277,9 @@ const styles = StyleSheet.create({
 		fontWeight: "600",
 		margin: "1rem 0rem",
 		padding: "0rem 2rem",
-		backgroundColor: colors.blue.regular,
+		backgroundColor: colors.green.regular,
 		":hover": {
-			backgroundColor: colors.blue.dark
+			backgroundColor: colors.green.dark
 		},
 		"@media (max-width: 769px)": {
 			justifyContent: "center"
@@ -311,11 +311,11 @@ const styles = StyleSheet.create({
 		borderRadius: "50px",
 		display: "flex",
 		justifyContent: "center",
-		backgroundColor: colors.blue.light,
+		backgroundColor: colors.green.light,
 		transition: "all .2s ease-in-out",
 		":hover": {
 			transform: "scale(1.1)",
-			backgroundColor: colors.blue.dark,
+			backgroundColor: colors.green.dark,
 			color: "white",
 			fill: "white"
 		},

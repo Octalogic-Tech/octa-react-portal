@@ -1,8 +1,8 @@
 const colors = {
-    blue:{
-        dark:"#10ABB6",
-        regular:"#3EC4CD",
-        light:"#87E3F9",
+    green:{
+        dark:"#2e7d32",
+        regular:"#4caf50",
+        light:"#81c784",
     },
     orange:{
         dark:"#F47F6A",
@@ -15,14 +15,15 @@ const colors = {
         light:"#D985FF",
     },
     pink:{
-        dark:"#f22bf2",
-        regular:"#ff5eff",
-        light:"#fc99fc",
+        dark:"#EA3C8B",
+        regular:"#F961A7",
+        light:"#F78FBE",
     },
-    green:{
-        dark:"#036D19",
-        regular:"#2ECC40",
-        light:"#8CD867",
+    blue:{
+        teal:"#0D7184",
+        ocean:"#24AAC4",
+        aquamarine:"#60E2CF",
+        turquoise:"#A1F8EB",
     },
     white:"#ffffff",
     black:"#000000",

@@ -9,7 +9,7 @@ const Loading = props => {
 		<div className={css(styles.content_horizontal)}>
 		    <div className={css(styles.content_vertical)}>
 			    <div className={css(styles.loader_wrapper)}>
-                    <LoadingComponent />
+                    <LoadingComponent spin={true}/>
                     <div className={css(styles.loader_text_wrapper)}>
                         <span className={css(styles.loader_text)}>octalogic</span>
                     </div>

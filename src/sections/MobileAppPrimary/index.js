@@ -20,6 +20,8 @@ let isActive = false;
 
 const navDotStyling = (currentValue) => {
 	const classes = [
+		"landing",
+		"footer",
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"

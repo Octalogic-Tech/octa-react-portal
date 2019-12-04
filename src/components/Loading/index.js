@@ -4,7 +4,7 @@ import { StyleSheet, css } from "aphrodite";
 import icon from "../../assets/images/icons/icon-loader.png";
 
 const Loading = props => {
-	return <img className={css(styles.icon_wrapper,styles.spinny_boy)} src={icon} alt="Icon" />;
+	return <img className={css(styles.icon_wrapper,props.spin?styles.spinny_boi:'')} src={icon} alt="Icon" />;
 };
 
 const spinKeyframes = {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 		width: "100%",
 		height: "100%"
 	},
-	spinny_boy: {
+	spinny_boi: {
 		animationName: [spinKeyframes],
 		animationDuration: "2500ms",
         animationIterationCount: "infinite",

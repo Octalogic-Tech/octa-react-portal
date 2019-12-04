@@ -7,7 +7,6 @@ import base from "../../styles/base";
 import icon from "../../assets/images/icons/icon-loader.png";
 
 const navDotStyling = currentValue => {
-console.log("TCL: currentValue", currentValue)
 	const classes = [
 		"landing",
 		"footer",

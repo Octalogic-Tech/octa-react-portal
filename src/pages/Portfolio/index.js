@@ -236,7 +236,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 		<Fragment>
 			<Menu fullpageApi={fullPageApi} />
 			<ReactFullpage
-				licenseKey={"YOUR_KEY_HERE"}
+				licenseKey={"4FC26219-C3024BCD-A2C3C34F-D83CCD47"}
 				scrollingSpeed={1000}
 				dragAndMove={true}
 				navigation={true}

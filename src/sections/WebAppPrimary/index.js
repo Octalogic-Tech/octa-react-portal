@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { slideInLeft } from "react-animations";
 import Icon from "@mdi/react";
-import { mdiReact } from "@mdi/js";
+import { mdiCheckboxBlankCircle, mdiReact } from "@mdi/js";
 
 import "html5-device-mockups";
 
@@ -21,6 +21,8 @@ let isActive = false;
 
 const navDotStyling = currentValue => {
 	const classes = [
+		"landing",
+		"footer",
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"
@@ -94,6 +96,12 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 				<div className={css(styles.details_wrapper)}>
 					<Typography variant="overline" display="block" gutterBottom>
 						{data.category.name}
+						<Icon
+							className={css(styles.overline_icon)}
+							path={mdiCheckboxBlankCircle}
+							size={0.4}
+						/>
+						{data.project.name}
 					</Typography>
 					<Typography
 						variant="h4"
@@ -155,6 +163,7 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 const styles = StyleSheet.create({
 	container: base.container,
 	content_wrapper: base.content_wrapper,
+	overline_icon: base.overline_icon,
 	triangle_wrapper: {
 		position: "absolute",
 		left: "0",

@@ -1,0 +1,28 @@
+name: Deploy_Development
+
+on:
+  pull_request:
+    branches: develop
+    types: [closed]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.ref }}
+      - name: Install dependencies
+        run: |
+          yarn install
+      - name: Build
+        run: |
+          npm run-script build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v1.1.0
+        with:
+          args: deploy -P default --only hosting:develop
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

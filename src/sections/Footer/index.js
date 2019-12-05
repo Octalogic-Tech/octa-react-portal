@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { slideInLeft } from "react-animations";
 import cx from "classnames";
@@ -24,6 +23,7 @@ import colors from "../../styles/colors";
 import Box from "@material-ui/core/Box";
 // import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
+import Tooltip from "@material-ui/core/Tooltip";
 import "../../styles/overrides.css";
 
 import icon from "../../assets/images/icons/icon-white.png";
@@ -67,8 +67,9 @@ const Footer = ({ data, activeSection, fullpageApi }) => {
 					<span className={css(styles.content_text)}>
 						Thank You, {data.title}
 					</span>
-					<Link
-						to={"/project/"}
+					<a
+						href={"https://octalogic.in/contact"}
+						target={"_blank"}
 						className={cx("link", css(styles.content_link))}
 					>
 						<Fab
@@ -79,7 +80,7 @@ const Footer = ({ data, activeSection, fullpageApi }) => {
 						>
 							Get in Touch
 						</Fab>
-					</Link>
+					</a>
 				</div>
 			</div>
 			<div className={css(styles.links_wrapper)}>
@@ -93,160 +94,209 @@ const Footer = ({ data, activeSection, fullpageApi }) => {
 					</div>
 					<div className={css(styles.technology_wrapper)}>
 						<div className={css(styles.technology_container)}>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={
-										"https://www.facebook.com/octalogic.tech/"
-									}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiFacebook}
-										title="Facebook"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={
-										"https://www.instagram.com/octalogic.tech/"
-									}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiInstagram}
-										title="Instagram"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={"https://twitter.com/octalogictech"}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiTwitter}
-										title="Twiiter"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={
-										"https://api.whatsapp.com/send?phone=919561007591&text=Hi,%20I%20am%20Interested%20in%20..."
-									}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiWhatsapp}
-										title="Whatsapp"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={
-										"https://www.linkedin.com/company/octalogic/"
-									}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiLinkedin}
-										title="Linked In"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={"tel:+917030518285"}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiPhone}
-										title="Call"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={
-										"mailto:info@octalogic.in?Subject=Hi, I am Interested in ..."
-									}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiEmail}
-										title="Email"
-										size={1.5}
-									/>
-								</a>
-							</div>
-							<div className={css(styles.technology_circle)}>
-								<a
-									target="_blank"
-									rel="noopener noreferrer"
-									href={"https://octalogic.in/"}
-									className={cx(
-										"link",
-										css(styles.content_link)
-									)}
-								>
-									<Icon
-										className={css(styles.technology_icon)}
-										path={mdiWeb}
-										title="Website"
-										size={1.5}
-									/>
-								</a>
-							</div>
+							{/* Facebook */}
+							<Tooltip title="Like us on Facebook">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://www.facebook.com/octalogic.tech/"
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiFacebook}
+											title="Facebook"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Instagram */}
+							<Tooltip title="Follow us on Instagram">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://www.instagram.com/octalogic.tech/"
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiInstagram}
+											title="Instagram"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Twitter */}
+							<Tooltip title="Follow us on Twitter">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://twitter.com/octalogictech"
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiTwitter}
+											title="Twitter"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Whatsapp */}
+							<Tooltip title="Ping us on Whatsapp">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://api.whatsapp.com/send?phone=919561007591&text=Hi,%20I%20am%20Interested%20in%20..."
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiWhatsapp}
+											title="Whatsapp"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* LinkedIn */}
+							<Tooltip title="Connect with us on LinkedIn">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"https://www.linkedin.com/company/octalogic/"
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiLinkedin}
+											title="LinkedIn"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Phone */}
+							<Tooltip title="Call us Maybe">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={"tel:+917030518285"}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiPhone}
+											title="Call"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Email */}
+							<Tooltip title="Drop us a line at">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={
+											"mailto:info@octalogic.in?Subject=Hi, I am Interested in ..."
+										}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiEmail}
+											title="Email"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
+
+							{/* Website */}
+							<Tooltip title="Check us out ;)">
+								<div className={css(styles.technology_circle)}>
+									<a
+										target="_blank"
+										rel="noopener noreferrer"
+										href={"https://octalogic.in/"}
+										className={cx(
+											"link",
+											css(styles.content_link)
+										)}
+									>
+										<Icon
+											className={css(
+												styles.technology_icon
+											)}
+											path={mdiWeb}
+											title="Octalogic Tech Website"
+											size={1.5}
+										/>
+									</a>
+								</div>
+							</Tooltip>
 						</div>
 					</div>
 				</div>
@@ -276,10 +326,10 @@ const styles = StyleSheet.create({
 		boxShadow: "10px -8px 6px 1px rgba(0, 0, 0, .2)",
 		zIndex: "1",
 		"@media only screen and (max-width: 600px)": {
-			height: "35rem",
+			height: "35rem"
 		},
 		"@media only screen and (min-width:601px) and (max-width: 769px)": {
-			height: "35rem",
+			height: "35rem"
 		}
 	},
 	polygon_second: {
@@ -293,10 +343,10 @@ const styles = StyleSheet.create({
 		boxShadow: "10px -8px 6px 1px rgba(0, 0, 0, .2)",
 		zIndex: "1",
 		"@media only screen and (max-width: 600px)": {
-			height: "35rem",
+			height: "35rem"
 		},
 		"@media only screen and (min-width:601px) and (max-width: 769px)": {
-			height: "35rem",
+			height: "35rem"
 		}
 	},
 	polygon_third: {
@@ -310,10 +360,10 @@ const styles = StyleSheet.create({
 		boxShadow: "10px -8px 6px 1px rgba(0, 0, 0, .2)",
 		zIndex: "1",
 		"@media only screen and (max-width: 600px)": {
-			height: "40rem",
+			height: "40rem"
 		},
 		"@media only screen and (min-width:601px) and (max-width: 769px)": {
-			height: "45rem",
+			height: "45rem"
 		}
 	},
 	polygon_fourth: {
@@ -327,10 +377,10 @@ const styles = StyleSheet.create({
 		boxShadow: "10px -8px 6px 1px rgba(0, 0, 0, .2)",
 		zIndex: "1",
 		"@media only screen and (max-width: 600px)": {
-			height: "40rem",
+			height: "40rem"
 		},
 		"@media only screen and (min-width:601px) and (max-width: 769px)": {
-			height: "45rem",
+			height: "45rem"
 		}
 	},
 	content_wrapper: {

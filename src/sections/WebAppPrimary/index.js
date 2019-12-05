@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { slideInLeft } from "react-animations";
 import Icon from "@mdi/react";
-import { mdiCheckboxBlankCircle, mdiReact } from "@mdi/js";
+import { mdiCheckboxBlankCircle } from "@mdi/js";
 
 import "html5-device-mockups";
+
+import Technology from "../../components/Technology";
 
 import base from "../../styles/base";
 import colors from "../../styles/colors";
@@ -15,7 +17,6 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Fab from "@material-ui/core/Fab";
 import "../../styles/overrides.css";
-
 
 let isActive = false;
 
@@ -135,24 +136,15 @@ const WebAppPrimary = ({ data, activeSection, fullpageApi }) => {
 						</Link>
 					</div>
 					<div className={css(styles.technology_wrapper)}>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ps</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ai</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Xd</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<Icon
-								className={css(styles.technology_icon)}
-								path={mdiReact}
-								title="React"
-								size={1.5}
-								rotate={90}
-							/>
-						</div>
+						{data.technology.map((tech, index) => {
+							return (
+								<Technology
+									name={tech.name}
+									icon={tech.icon.name}
+									color={"green"}
+								/>
+							);
+						})}
 					</div>
 				</div>
 			</div>
@@ -312,38 +304,6 @@ const styles = StyleSheet.create({
 			justifyContent: "center"
 		}
 	},
-	technology_circle: {
-		color: "black",
-		height: "4rem",
-		width: "4rem",
-		margin: "1rem",
-		borderRadius: "50px",
-		display: "flex",
-		justifyContent: "center",
-		backgroundColor: colors.green.light,
-		transition: "all .2s ease-in-out",
-		":hover": {
-			transform: "scale(1.1)",
-			backgroundColor: colors.green.dark,
-			color: "white",
-			fill: "white"
-		},
-		"@media only screen and (max-width: 600px)": {
-			margin: "0.5rem"
-		}
-	},
-	technology_text: {
-		fontSize: "1.2rem",
-		fontWeight: "700",
-		margin: "auto",
-		color: "inherit"
-	},
-	technology_icon: {
-		fontSize: "1.2rem",
-		fontWeight: "500",
-		margin: "auto",
-		fill: "inherit"
-	}
 });
 
 export default WebAppPrimary;

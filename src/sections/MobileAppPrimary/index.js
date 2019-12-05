@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { zoomIn } from "react-animations";
 import Icon from "@mdi/react";
-import { mdiCheckboxBlankCircle, mdiReact } from "@mdi/js";
+import { mdiCheckboxBlankCircle } from "@mdi/js";
 
 import "html5-device-mockups";
 
 import base from "../../styles/base";
 import colors from "../../styles/colors";
 import responsive from "../../styles/responsive";
+
+import Technology from "../../components/Technology";
 
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -18,7 +20,7 @@ import "../../styles/overrides.css";
 
 let isActive = false;
 
-const navDotStyling = (currentValue) => {
+const navDotStyling = currentValue => {
 	const classes = [
 		"landing",
 		"footer",
@@ -27,20 +29,16 @@ const navDotStyling = (currentValue) => {
 		"emerging-app-container"
 	];
 	classes.map(value => {
-		if(currentValue===value){
-			document.body.classList.add(value);	
-		}else{
+		if (currentValue === value) {
+			document.body.classList.add(value);
+		} else {
 			document.body.classList.remove(value);
 		}
 		return false;
 	});
 };
 
-const MobileAppPrimary = ({
-	data,
-	activeSection,
-	fullpageApi,
-}) => {
+const MobileAppPrimary = ({ data, activeSection, fullpageApi }) => {
 	// const [isThemeDark, setIsThemeDark] = useState(false);
 	if (activeSection === data.category) {
 		// This allows us to run animations on first load of the section
@@ -50,11 +48,9 @@ const MobileAppPrimary = ({
 
 	function createMarkup(html) {
 		return {
-		  __html: html
+			__html: html
 		};
-	  }
-
-	
+	}
 
 	return (
 		<Box className={css(styles.container)}>
@@ -117,14 +113,23 @@ const MobileAppPrimary = ({
 					>
 						{data.name}
 					</Typography>
-					<div dangerouslySetInnerHTML={createMarkup(data.description)} className={css(responsive.hide_sm_down)}></div>
-					<div dangerouslySetInnerHTML={createMarkup(data.summary)} className={css(responsive.hide_md_up)}></div>
+					<div
+						dangerouslySetInnerHTML={createMarkup(data.description)}
+						className={css(responsive.hide_sm_down)}
+					></div>
+					<div
+						dangerouslySetInnerHTML={createMarkup(data.summary)}
+						className={css(responsive.hide_md_up)}
+					></div>
 
 					{/* <div className={css(responsive.hide_sm_down)}>
 						<List>{generate()}</List>
 					</div> */}
 					<div className={css(styles.technology_wrapper)}>
-						<Link to={"/project/"+data.project.id} className={'link'}>
+						<Link
+							to={"/project/" + data.project.id}
+							className={"link"}
+						>
 							<Fab
 								variant="extended"
 								color="primary"
@@ -136,24 +141,15 @@ const MobileAppPrimary = ({
 						</Link>
 					</div>
 					<div className={css(styles.technology_wrapper)}>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ps</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ai</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Xd</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<Icon
-								className={css(styles.technology_icon)}
-								path={mdiReact}
-								title="React"
-								size={1.5}
-								rotate={90}
-							/>
-						</div>
+						{data.technology.map((tech, index) => {
+							return (
+								<Technology
+									name={tech.name}
+									icon={tech.icon.name}
+									color={"orange"}
+								/>
+							);
+						})}
 					</div>
 				</div>
 			</div>
@@ -162,7 +158,7 @@ const MobileAppPrimary = ({
 };
 
 const styles = StyleSheet.create({
-	link:base.link,
+	link: base.link,
 	container: base.container,
 	content_wrapper: base.content_wrapper,
 	overline_icon: base.overline_icon,
@@ -273,12 +269,12 @@ const styles = StyleSheet.create({
 	project_title: {},
 	view_more_button: {
 		fontWeight: "600",
-		color:colors.gray.nine,
+		color: colors.gray.nine,
 		margin: "1rem 0rem",
 		padding: "0rem 2rem",
 		backgroundColor: colors.orange.regular,
 		":hover": {
-			backgroundColor: colors.orange.dark,
+			backgroundColor: colors.orange.dark
 		},
 		"@media (max-width: 769px)": {
 			justifyContent: "center"
@@ -302,38 +298,7 @@ const styles = StyleSheet.create({
 			justifyContent: "center"
 		}
 	},
-	technology_circle: {
-		color: "black",
-		height: "4rem",
-		width: "4rem",
-		margin: "1rem",
-		borderRadius: "50px",
-		display: "flex",
-		justifyContent: "center",
-		backgroundColor: colors.orange.regular,
-		transition: "all .2s ease-in-out",
-		":hover": {
-			transform: "scale(1.1)",
-			backgroundColor: colors.orange.dark,
-			color: "white",
-			fill: "white"
-		},
-		"@media only screen and (max-width: 600px)": {
-			margin: "0.5rem"
-		}
-	},
-	technology_text: {
-		fontSize: "1.2rem",
-		fontWeight: "700",
-		margin: "auto",
-		color: "inherit"
-	},
-	technology_icon: {
-		fontSize: "1.2rem",
-		fontWeight: "500",
-		margin: "auto",
-		fill: "inherit"
-	}
+	
 });
 
 export default MobileAppPrimary;

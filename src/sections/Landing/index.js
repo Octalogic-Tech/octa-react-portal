@@ -68,7 +68,13 @@ const Landing = ({ currentThemeType, activeSection, data }) => {
 							>
 								Hey
 							</p>
-							<p className={css(styles.greeting_main_name)}>
+							<p 
+							className={css(
+									styles.greeting_main_name,
+									currentThemeType === "dark"
+										? styles.greeting_main_name_dark
+										: styles.greeting_main_name_light
+								)}>
 								{data.title}
 							</p>
 						</div>
@@ -202,13 +208,18 @@ const styles = StyleSheet.create({
 		margin: "0rem 2rem",
 		fontSize: "8rem",
 		lineHeight: "1",
-		color: colors.octalogic.dark,
 		"@media only screen and (max-width: 600px)": {
 			fontSize: "3rem",
 		},
 		"@media only screen and (min-width:601px) and  (max-width: 769px)": {
 			fontSize: "4rem",
 		}
+	},
+	greeting_main_name_light: {
+		color: colors.blue.teal,
+	},
+	greeting_main_name_dark: {
+		color: colors.blue.aquamarine,
 	},
 	icon_wrapper: {
 		margin: "0rem 2rem",

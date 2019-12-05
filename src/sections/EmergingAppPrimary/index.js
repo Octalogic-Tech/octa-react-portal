@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
-import { mdiCheckboxBlankCircle, mdiReact } from "@mdi/js";
+import { mdiCheckboxBlankCircle } from "@mdi/js";
 
 import "html5-device-mockups";
 
 import base from "../../styles/base";
 import colors from "../../styles/colors";
 import responsive from "../../styles/responsive";
+
+import Technology from "../../components/Technology";
 
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
@@ -23,6 +25,8 @@ let isActive = false;
 
 const navDotStyling = currentValue => {
 	const classes = [
+		"landing",
+		"footer",
 		"web-app-container",
 		"mobile-app-container",
 		"emerging-app-container"
@@ -139,24 +143,15 @@ const EmergingAppPrimary = ({ data, activeSection, fullpageApi }) => {
 						</Link>
 					</div>
 					<div className={css(styles.technology_wrapper)}>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ps</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Ai</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<h4 className={css(styles.technology_text)}>Xd</h4>
-						</div>
-						<div className={css(styles.technology_circle)}>
-							<Icon
-								className={css(styles.technology_icon)}
-								path={mdiReact}
-								title="React"
-								size={1.5}
-								rotate={90}
-							/>
-						</div>
+						{data.technology.map((tech, index) => {
+								return (
+									<Technology
+										name={tech.name}
+										icon={tech.icon.name}
+										color={"purple"}
+									/>
+								);
+							})}
 					</div>
 				</div>
 			</div>
@@ -357,38 +352,6 @@ const styles = StyleSheet.create({
 			justifyContent: "center"
 		}
 	},
-	technology_circle: {
-		color: "black",
-		height: "4rem",
-		width: "4rem",
-		margin: "1rem",
-		borderRadius: "50px",
-		display: "flex",
-		justifyContent: "center",
-		backgroundColor: colors.purple.light,
-		transition: "all .2s ease-in-out",
-		":hover": {
-			transform: "scale(1.1)",
-			backgroundColor: colors.purple.regular,
-			color: "white",
-			fill: "white"
-		},
-		"@media only screen and (max-width: 600px)": {
-			margin: "0.5rem"
-		}
-	},
-	technology_text: {
-		fontSize: "1.2rem",
-		fontWeight: "700",
-		margin: "auto",
-		color: "inherit"
-	},
-	technology_icon: {
-		fontSize: "1.2rem",
-		fontWeight: "500",
-		margin: "auto",
-		fill: "inherit"
-	}
 });
 
 export default EmergingAppPrimary;

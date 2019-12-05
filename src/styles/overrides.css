@@ -84,13 +84,13 @@
 }
 
 
-.footer #fp-nav ul li a span {
+/* .footer #fp-nav ul li a span {
     background: var(--blue-regular);
 }
 
 .footer #fp-nav ul li a.active span {
     background: var(--blue-dark);
-}
+} */
 
 .web-app-container .active .thumbnail_wrapper{
     border: 5px solid var(--green-dark);

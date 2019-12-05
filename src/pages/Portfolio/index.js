@@ -1,8 +1,10 @@
 import React, { useState, Fragment } from "react";
+// import * as firebase from "firebase/app";
+// import "firebase/analytics";
 import ReactFullpage from "@fullpage/react-fullpage";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
-import changeCase from 'change-case';
+import changeCase from "change-case";
 import { mdiMenuOpen, mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
 
 import colors from "../../styles/colors";
@@ -17,8 +19,17 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
+
+
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
-    const [activeSection, setActiveSection] = useState("landing");
+	
+	// firebase.analytics().logEvent('select_content', {
+	// 	content_type: 'image',
+	// 	content_id: 'P12453',
+	// 	items: [{ name: 'Kittens' }]
+	//   });
+
+	const [activeSection, setActiveSection] = useState("landing");
 	const [activeSectionType, setActiveSectionType] = useState("landing");
 	const [isSideBarOpen, setSideBarOpen] = useState(false);
 	const [fullPageApi, setFullPageApi] = useState(false);
@@ -27,7 +38,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 	const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	const renderSection = (section, fullpageApi) => {
-        let component = null;
+		let component = null;
 		switch (section.category.name) {
 			case "Web Development":
 				component = (
@@ -226,17 +237,19 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 	const navBarScroll = () => {
 		setTimeout(function() {
 			const element = document.getElementById(activeSection);
-            if(element){
+			if (element) {
 				element.scrollIntoView({ behavior: "smooth" });
 			}
 		}, 100);
 	};
 
+	
+
 	return (
 		<Fragment>
 			<Menu fullpageApi={fullPageApi} />
 			<ReactFullpage
-				licenseKey={"YOUR_KEY_HERE"}
+				licenseKey={"4FC26219-C3024BCD-A2C3C34F-D83CCD47"}
 				scrollingSpeed={1000}
 				dragAndMove={true}
 				navigation={true}
@@ -255,13 +268,15 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
 							setActiveSection(destination.anchor);
 						}
 					});
-					
-					if (destination.anchor === "landing" || destination.anchor === "footer") {
+
+					if (
+						destination.anchor === "landing" ||
+						destination.anchor === "footer"
+					) {
 						setActiveSectionType(destination.anchor);
 						setActiveSection(destination.anchor);
 					}
 				}}
-                
 				render={({ state, fullpageApi, onLeave }) => {
 					setFullPageApi(fullpageApi);
 					return (

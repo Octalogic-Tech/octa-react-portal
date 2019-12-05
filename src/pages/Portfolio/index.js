@@ -237,6 +237,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
         normalScrollElements={"#right-sidebar"}
         menu={"#menu"}
         onLeave={(origin, destination, direction) => {
+          console.log("TCL: Portfolio -> destination.anchor", destination);
           data.components.forEach((item, index) => {
             if (destination.anchor === item.id) {
               setActiveSectionType(item.category);
@@ -258,7 +259,8 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
                   key={"landing"}
                   anchor={"landing"}
                   data={data}
-                  activeSection={activeSectionType}
+                  activeSection={activeSection}
+                  activeSectionType={activeSectionType}
                   currentThemeType={currentThemeType}
                   fullpageApi={fullpageApi}
                   toggleTheme={toggleTheme}
@@ -272,7 +274,8 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
                   key={"footer"}
                   anchor={"footer"}
                   data={data}
-                  activeSection={activeSectionType}
+                  activeSection={activeSection}
+                  activeSectionType={activeSectionType}
                   currentThemeType={currentThemeType}
                   fullpageApi={fullpageApi}
                   toggleTheme={toggleTheme}

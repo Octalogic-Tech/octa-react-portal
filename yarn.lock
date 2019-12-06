@@ -1157,6 +1157,33 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconify/icons-fa-brands@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-fa-brands/-/icons-fa-brands-1.0.8.tgz#e9417f0af3a603f52a8881d7dbfddd597b4b71af"
+  integrity sha512-pSdZDThGgMEiX03bzrKEr+530lijnu0pULm62rrNpoBO1jfwib4LqFX2tLUDgKBV8g6USvDO0X3xbUoZe6K4yA==
+
+"@iconify/icons-logos@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-logos/-/icons-logos-1.0.9.tgz#4fbcfbca6722e78b68d7215b6ab9e347e06df5cf"
+  integrity sha512-bwQQkQ6zGtdGYnyCOk7hY6Lja/8t/OjFO+pkfjWq5gxYZ2fBsGFeN5hYidK8yraormgqMQ9OEL9j2NgbpDjojg==
+
+"@iconify/icons-mdi@^1.0.35":
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-mdi/-/icons-mdi-1.0.35.tgz#4797b44dc1d7803a66a07cc67a7582f32eeabf23"
+  integrity sha512-5arY04/ESxv1quNetuAifnyKJc/nVlUDkEzNCL2jW1clryh7qT+MiwJ6UECvFmF4Pih1N/O34nMgcgK/zgcfRg==
+
+"@iconify/icons-simple-icons@^1.0.17":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-simple-icons/-/icons-simple-icons-1.0.17.tgz#742c3dbec21b91f355ca6722b67620e6ebdb4b4b"
+  integrity sha512-L1miHeMOxWTuplALYYWttCbFvqgBlZkgQ8TIrnyIMCp9INySX2IpT3g2dEITJtSRzwN2mDszIWPcuURVEQ6tIg==
+
+"@iconify/react@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-1.1.1.tgz#38526508f722e0b617723d79209bb1e6d8c59c61"
+  integrity sha512-BRbPW/vkyWi6n2dHx4O8Cp0RKeI4KsxieLZ+UcyknCkk1IVxii5IassCIKHJ3jWB6s6uLAWq5EnHJniI7er9+w==
+  dependencies:
+    react "^16.8.3"
+
 "@jest/console@^24.7.1", "@jest/console@^24.9.0":
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/@jest/console/-/console-24.9.0.tgz#79b1bc06fb74a8cfb01cbdedf945584b1b9707f0"
@@ -9670,7 +9697,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.10.1:
+react@^16.10.1, react@^16.8.3:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==

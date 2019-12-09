@@ -23,7 +23,8 @@ const Landing = props => {
           </span>
         </div>
         <div className={css(styles.technology_wrapper)}>
-          <Link to={"/portfolio/slopes"} className={"link"}>
+          {/* FIXME: remove placeholder */}
+          <Link to={`/portfolio/${process.env.REACT_APP_PLACEHOLDER_PORTFOLIO}`} className={"link"}>
             <Fab
               variant="extended"
               color="primary"

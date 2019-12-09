@@ -34,4 +34,4 @@ jobs:
           yarn install
       - name: Build
         run: |
-          npm run-script build
+          npm run-script build-dev

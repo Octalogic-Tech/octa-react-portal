@@ -27,3 +27,5 @@ yarn-debug.log*
 yarn-error.log*
 *.log
 .firebase
+
+Portal.code-workspace

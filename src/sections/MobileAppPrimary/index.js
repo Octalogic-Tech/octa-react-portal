@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import { zoomIn } from "react-animations";
 import Icon from "@mdi/react";
@@ -15,7 +14,6 @@ import Technology from "../../components/Technology";
 
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Fab from "@material-ui/core/Fab";
 import "../../styles/overrides.css";
 
 const navDotStyling = currentValue => {
@@ -103,7 +101,8 @@ const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi 
           {/* <div className={css(responsive.hide_sm_down)}>
 						<List>{generate()}</List>
 					</div> */}
-          <div className={css(styles.technology_wrapper)}>
+          {/* FIXME: revert comment when page is added */}
+          {/* <div className={css(styles.technology_wrapper)}>
             <Link to={"/project/" + data.project.id} className={"link"}>
               <Fab
                 variant="extended"
@@ -114,7 +113,7 @@ const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi 
                 View More
               </Fab>
             </Link>
-          </div>
+          </div> */}
           <div className={css(styles.technology_wrapper)}>
             {data.technology.map((tech, index) => {
               return (

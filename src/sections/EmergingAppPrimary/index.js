@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
 import { mdiCheckboxBlankCircle } from "@mdi/js";
@@ -14,7 +13,6 @@ import Technology from "../../components/Technology";
 
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Fab from "@material-ui/core/Fab";
 import "../../styles/overrides.css";
 import { heightKeyframes, translateKeyFrames } from "../../styles/stripeAnimations";
 
@@ -107,7 +105,8 @@ const EmergingAppPrimary = ({ data, activeSection, activeSectionType, fullpageAp
             className={css(responsive.hide_md_up)}
           ></div>
 
-          <div className={css(styles.technology_wrapper)}>
+          {/* FIXME: revert comment when page is added */}
+          {/* <div className={css(styles.technology_wrapper)}>
             <Link to={"/project/" + data.project.id} className={"link"}>
               <Fab
                 variant="extended"
@@ -118,7 +117,7 @@ const EmergingAppPrimary = ({ data, activeSection, activeSectionType, fullpageAp
                 View More
               </Fab>
             </Link>
-          </div>
+          </div> */}
           <div className={css(styles.technology_wrapper)}>
             {data.technology.map((tech, index) => {
               return (

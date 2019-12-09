@@ -1,5 +1,5 @@
 export const fetchFirebaseConfig = () => {
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.REACT_APP_CONFIG === "production") {
     return {
       apiKey: "AIzaSyDeRFK9AsB3z-h6r4bx3cjMeivtWEIR_Tw",
       authDomain: "octalogic-portfolio.firebaseapp.com",

@@ -19,13 +19,8 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
+// const analytics = firebase.analytics();
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
-  // firebase.analytics().logEvent('select_content', {
-  // 	content_type: 'image',
-  // 	content_id: 'P12453',
-  // 	items: [{ name: 'Kittens' }]
-  //   });
-
   const [activeSection, setActiveSection] = useState("landing");
   const [activeSectionType, setActiveSectionType] = useState("landing");
   const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -237,15 +232,24 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
         normalScrollElements={"#right-sidebar"}
         menu={"#menu"}
         onLeave={(origin, destination, direction) => {
-          console.log("TCL: Portfolio -> destination.anchor", destination);
           data.components.forEach((item, index) => {
             if (destination.anchor === item.id) {
+              /* analytics.logEvent("view_item", {
+                content_type: "component",
+                content_id: item.id,
+                name: item.name,
+              }); */
+
               setActiveSectionType(item.category);
               setActiveSection(destination.anchor);
             }
           });
 
           if (destination.anchor === "landing" || destination.anchor === "footer") {
+            /* analytics.logEvent("view_item", {
+              content_type: destination.anchor,
+              name: destination.anchor,
+            }); */
             setActiveSectionType(destination.anchor);
             setActiveSection(destination.anchor);
           }

@@ -14,7 +14,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 const { store, persistor } = configureStore();
 
 firebase.initializeApp(fetchFirebaseConfig());
-firebase.analytics();
+const analytics = firebase.analytics();
 firebase.performance();
 
 const App = () => {
@@ -45,7 +45,7 @@ const App = () => {
         <ConnectedRouter history={history}>
           <MuiThemeProvider theme={muiTheme}>
             <CssBaseline>
-              <Routes toggleTheme={toggleTheme} currentTheme={theme} />
+              <Routes analytics={analytics} toggleTheme={toggleTheme} currentTheme={theme} />
             </CssBaseline>
           </MuiThemeProvider>
         </ConnectedRouter>

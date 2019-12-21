@@ -20,7 +20,8 @@ import Thumbnail from "../../components/Thumbnail";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
 // const analytics = firebase.analytics();
-const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
+const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) => {
+  console.log("TCL: Portfolio -> analytics", analytics);
   const [activeSection, setActiveSection] = useState("landing");
   const [activeSectionType, setActiveSectionType] = useState("landing");
   const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -28,6 +29,12 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
   // const currentThemeType = currentTheme.palette.type;
   const currentThemeType = currentTheme;
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  // analytics.logEvent("view_portfolio", {
+  //   content_type: "component",
+  //   content_id: item.id,
+  //   name: item.name,
+  // });
 
   const renderSection = (section, fullpageApi) => {
     let component = null;

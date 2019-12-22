@@ -1,6 +1,4 @@
 import React, { useState, Fragment } from "react";
-// import * as firebase from "firebase/app";
-// import "firebase/analytics";
 import ReactFullpage from "@fullpage/react-fullpage";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
@@ -19,9 +17,7 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
-// const analytics = firebase.analytics();
 const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) => {
-  console.log("TCL: Portfolio -> analytics", analytics);
   const [activeSection, setActiveSection] = useState("landing");
   const [activeSectionType, setActiveSectionType] = useState("landing");
   const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -29,12 +25,6 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
   // const currentThemeType = currentTheme.palette.type;
   const currentThemeType = currentTheme;
   const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  // analytics.logEvent("view_portfolio", {
-  //   content_type: "component",
-  //   content_id: item.id,
-  //   name: item.name,
-  // });
 
   const renderSection = (section, fullpageApi) => {
     let component = null;
@@ -241,11 +231,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
         onLeave={(origin, destination, direction) => {
           data.components.forEach((item, index) => {
             if (destination.anchor === item.id) {
-              /* analytics.logEvent("view_item", {
+              analytics.logEvent("view_item", {
                 content_type: "component",
                 content_id: item.id,
                 name: item.name,
-              }); */
+              });
 
               setActiveSectionType(item.category);
               setActiveSection(destination.anchor);
@@ -253,10 +243,10 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
           });
 
           if (destination.anchor === "landing" || destination.anchor === "footer") {
-            /* analytics.logEvent("view_item", {
+            analytics.logEvent("view_item", {
               content_type: destination.anchor,
               name: destination.anchor,
-            }); */
+            });
             setActiveSectionType(destination.anchor);
             setActiveSection(destination.anchor);
           }

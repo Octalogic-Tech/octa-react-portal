@@ -1,6 +1,4 @@
 import React, { useState, Fragment } from "react";
-// import * as firebase from "firebase/app";
-// import "firebase/analytics";
 import ReactFullpage from "@fullpage/react-fullpage";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
@@ -19,8 +17,7 @@ import Thumbnail from "../../components/Thumbnail";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 
-// const analytics = firebase.analytics();
-const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
+const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) => {
   const [activeSection, setActiveSection] = useState("landing");
   const [activeSectionType, setActiveSectionType] = useState("landing");
   const [isSideBarOpen, setSideBarOpen] = useState(false);
@@ -234,11 +231,11 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
         onLeave={(origin, destination, direction) => {
           data.components.forEach((item, index) => {
             if (destination.anchor === item.id) {
-              /* analytics.logEvent("view_item", {
+              analytics.logEvent("view_item", {
                 content_type: "component",
                 content_id: item.id,
                 name: item.name,
-              }); */
+              });
 
               setActiveSectionType(item.category);
               setActiveSection(destination.anchor);
@@ -246,10 +243,10 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme }) => {
           });
 
           if (destination.anchor === "landing" || destination.anchor === "footer") {
-            /* analytics.logEvent("view_item", {
+            analytics.logEvent("view_item", {
               content_type: destination.anchor,
               name: destination.anchor,
-            }); */
+            });
             setActiveSectionType(destination.anchor);
             setActiveSection(destination.anchor);
           }

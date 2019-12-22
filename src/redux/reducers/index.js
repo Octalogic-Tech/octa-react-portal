@@ -7,12 +7,13 @@ import history from "../history";
 
 import portfolio from "./portfolio";
 import theme from "./theme";
+import analytics from "./analytics";
 
 const rootPersistConfig = {
-	key: "root",
-	storage: storage,
-	stateReconciler: autoMergeLevel2,
-	blacklist: ["router", "portfolio", "theme"]
+  key: "root",
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  blacklist: ["router", "portfolio", "theme", "analytics"],
 };
 
 // const authPersistConfig = {
@@ -22,9 +23,10 @@ const rootPersistConfig = {
 // };
 
 const rootReducer = combineReducers({
-	router: connectRouter(history),
-	portfolio: portfolio,
-	theme: theme
+  router: connectRouter(history),
+  portfolio: portfolio,
+  theme: theme,
+  analytics: analytics,
 });
 
 const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);

@@ -37,6 +37,12 @@ const Landing = ({ currentThemeType, activeSection, activeSectionType, data }) =
     navDotStyling("landing");
   }
 
+  function createMarkup(html) {
+    return {
+      __html: html,
+    };
+  }
+
   return (
     <div className={css(styles.container)}>
       <div className={css(styles.background_text_wrapper)}>
@@ -92,7 +98,10 @@ const Landing = ({ currentThemeType, activeSection, activeSectionType, data }) =
         </div>
         <div className={css(styles.content_description)}>
           <div className={css(styles.description_wrapper)}>
-            <p className={css(styles.description_text)}>{data.description}</p>
+            <p
+              className={css(styles.description_text)}
+              dangerouslySetInnerHTML={createMarkup(data.description)}
+            ></p>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 import { zoomIn } from "react-animations";
 import Icon from "@mdi/react";
@@ -15,6 +15,9 @@ import Technology from "../../components/Technology";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import "../../styles/overrides.css";
+
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 const navDotStyling = currentValue => {
   const classes = [
@@ -36,6 +39,7 @@ const navDotStyling = currentValue => {
 
 const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi }) => {
   const isActive = useRef();
+  const [isOpen, toggleModal] = useState(false);
 
   useEffect(() => {
     isActive.current = false;
@@ -66,7 +70,7 @@ const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi 
       </div>
       <div className={css(styles.content_wrapper)}>
         <div className={css(styles.frame_wrapper)}>
-          <div className="device-wrapper mobile_app">
+          <div className="device-wrapper mobile_app" onClick={() => toggleModal(!isOpen)}>
             <div
               className="device"
               data-device="Pixel"
@@ -77,6 +81,9 @@ const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi 
                 <img className={css(styles.frame_image)} src={data.cover.link} alt="project" />
               </div>
               <div className="button"></div>
+              {isOpen && (
+                <Lightbox mainSrc={data.cover.link} onCloseRequest={() => toggleModal(!isOpen)} />
+              )}
             </div>
           </div>
         </div>

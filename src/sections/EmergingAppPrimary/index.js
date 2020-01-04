@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { StyleSheet, css } from "aphrodite";
 import Icon from "@mdi/react";
 import { mdiCheckboxBlankCircle } from "@mdi/js";
@@ -15,6 +15,9 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import "../../styles/overrides.css";
 import { heightKeyframes, translateKeyFrames } from "../../styles/stripeAnimations";
+
+import Lightbox from "react-image-lightbox";
+import "react-image-lightbox/style.css";
 
 const navDotStyling = currentValue => {
   const classes = [
@@ -36,6 +39,7 @@ const navDotStyling = currentValue => {
 
 const EmergingAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi }) => {
   const isActive = useRef();
+  const [isOpen, toggleModal] = useState(false);
 
   useEffect(() => {
     isActive.current = false;
@@ -72,7 +76,7 @@ const EmergingAppPrimary = ({ data, activeSection, activeSectionType, fullpageAp
       </div>
       <div className={css(styles.content_wrapper)}>
         <div className={css(styles.frame_wrapper)}>
-          <div className="device-wrapper emerging_app">
+          <div className="device-wrapper emerging_app" onClick={() => toggleModal(!isOpen)}>
             <div
               className="device"
               data-device="iMac"
@@ -83,6 +87,9 @@ const EmergingAppPrimary = ({ data, activeSection, activeSectionType, fullpageAp
                 <img className={css(styles.frame_image)} src={data.cover.link} alt="project" />
               </div>
               <div className="button"></div>
+              {isOpen && (
+                <Lightbox mainSrc={data.cover.link} onCloseRequest={() => toggleModal(!isOpen)} />
+              )}
             </div>
           </div>
         </div>

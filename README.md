@@ -20,6 +20,8 @@ Client Interface : https://portfolio-client.web.app/
 
 API Docs : https://octalogic-portfolio-dev.web.app/
 
+Base API URL : https://asia-east2-octalogic-portfolio-dev.cloudfunctions.net/api/v1
+
 <br/>
 
 #### Prod Environment
@@ -28,6 +30,8 @@ Admin Dashboard : https://portfolio-panel.octalogic.in/
 Client Interface : https://portfolio.octalogic.in/
 
 API Docs : https://portfolio-api-docs.octalogic.in/
+
+Base API URL : https://us-central1-octalogic-portfolio.cloudfunctions.net/api/v1
 
 <br/>
 

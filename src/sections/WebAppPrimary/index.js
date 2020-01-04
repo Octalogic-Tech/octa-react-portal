@@ -78,7 +78,11 @@ const WebAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi }) 
               data-color="white"
             >
               <div className="screen">
-                <img className={css(styles.frame_image)} src={data.cover.link} alt="project" />
+                <img
+                  className={css(styles.frame_image)}
+                  src={data.cover ? data.cover.link : ""}
+                  alt="project"
+                />
               </div>
               <div className="button"></div>
             </div>

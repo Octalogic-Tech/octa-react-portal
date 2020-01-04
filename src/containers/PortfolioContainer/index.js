@@ -30,7 +30,8 @@ const PortfolioContainer = ({
     const analyticsObject = ownProps.analytics;
     addAnalytics({ data: analyticsObject });
     // currentTheme={ownProps.currentTheme}
-  }, [fetchPortfolio, addAnalytics, ownProps, key]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchPortfolio, addAnalytics, key]);
 
   return (
     <Fragment>

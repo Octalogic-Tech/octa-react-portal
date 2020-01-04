@@ -5,6 +5,8 @@ import classNames from "classnames";
 import colors from "../../styles/colors";
 
 import landing from "../../assets/images/projects/webapp.png";
+import webDefaultImage from "../../assets/images/device_frames/web-default.png";
+import mobileDefaultImage from "../../assets/images/device_frames/mobile-default.png";
 
 const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) => {
   let thumbnail = null;
@@ -15,7 +17,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_web)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_web)}
-              src={component.cover ? component.cover.link : ""}
+              src={component.cover ? component.cover.link : webDefaultImage}
               alt="project"
             />
           </div>
@@ -26,7 +28,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_mobile)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_mobile)}
-              src={component.cover ? component.cover.link : ""}
+              src={component.cover ? component.cover.link : mobileDefaultImage}
               alt="project"
             />
           </div>
@@ -37,7 +39,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_emerging)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_emerging)}
-              src={component.cover ? component.cover.link : ""}
+              src={component.cover ? component.cover.link : webDefaultImage}
               alt="project"
             />
           </div>

@@ -226,7 +226,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
         anchors={getNavData(data).anchors}
         /* navigationTooltips={getNavData(data).navigationTooltips} */
         lockAnchors={true}
-        normalScrollElements={"#right-sidebar"}
+        normalScrollElements={"#menu"}
         menu={"#menu"}
         onLeave={(origin, destination, direction) => {
           data.components.forEach((item, index) => {

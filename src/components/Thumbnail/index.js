@@ -15,7 +15,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_web)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_web)}
-              src={component.cover.link}
+              src={component.cover ? component.cover.link : ""}
               alt="project"
             />
           </div>
@@ -26,7 +26,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_mobile)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_mobile)}
-              src={component.cover.link}
+              src={component.cover ? component.cover.link : ""}
               alt="project"
             />
           </div>
@@ -37,7 +37,7 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           <div className={css(styles.thumbnail_wrapper_emerging)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_emerging)}
-              src={component.cover.link}
+              src={component.cover ? component.cover.link : ""}
               alt="project"
             />
           </div>

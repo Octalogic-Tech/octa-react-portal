@@ -163,7 +163,10 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
                   setSideBarOpen={setSideBarOpen}
                   component={{
                     id: "landing",
-                    category: "Web",
+                    category: {
+                      type: "Web",
+                      name: "Landing",
+                    },
                     name: "Landing",
                     key: "landing",
                     media: data.media,
@@ -187,7 +190,10 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
                   setSideBarOpen={setSideBarOpen}
                   component={{
                     id: "footer",
-                    category: "Web",
+                    category: {
+                      type: "Web",
+                      name: "Footer",
+                    },
                     name: "Footer",
                     key: "footer",
                     media: data.media,

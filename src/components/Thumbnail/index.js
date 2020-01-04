@@ -5,6 +5,8 @@ import classNames from "classnames";
 import colors from "../../styles/colors";
 
 import landing from "../../assets/images/projects/webapp.png";
+import headerImage from "../../assets/images/projects/header.png";
+import footerImage from "../../assets/images/projects/footer.png";
 import webDefaultImage from "../../assets/images/device_frames/web-default.png";
 import mobileDefaultImage from "../../assets/images/device_frames/mobile-default.png";
 
@@ -45,12 +47,34 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
           </div>
         );
         break;
+      case "Landing":
+        thumbnail = (
+          <div className={css(styles.thumbnail_wrapper_emerging)}>
+            <img
+              className={css(styles.thumbnail_image, styles.thumbnail_image_landing)}
+              src={headerImage}
+              alt="project"
+            />
+          </div>
+        );
+        break;
+      case "Footer":
+        thumbnail = (
+          <div className={css(styles.thumbnail_wrapper_emerging)}>
+            <img
+              className={css(styles.thumbnail_image, styles.thumbnail_image_landing)}
+              src={footerImage}
+              alt="project"
+            />
+          </div>
+        );
+        break;
       default:
         thumbnail = (
           <div className={css(styles.thumbnail_wrapper_landing)}>
             <img
               className={css(styles.thumbnail_image, styles.thumbnail_image_landing)}
-              src={landing}
+              src={headerImage}
               alt="project"
             />
           </div>

@@ -4,7 +4,6 @@ import classNames from "classnames";
 
 import colors from "../../styles/colors";
 
-import landing from "../../assets/images/projects/webapp.png";
 import headerImage from "../../assets/images/projects/header.png";
 import footerImage from "../../assets/images/projects/footer.png";
 import webDefaultImage from "../../assets/images/device_frames/web-default.png";

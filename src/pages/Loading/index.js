@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
-import { lighten, makeStyles, withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import colors from "../../styles/colors";
 import LoadingComponent from "../../components/Loading";
 import LinearProgress from "@material-ui/core/LinearProgress";

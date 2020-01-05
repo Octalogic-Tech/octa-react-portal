@@ -15,6 +15,7 @@ import responsive from "../../styles/responsive";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import "../../styles/overrides.css";
+import defaultImage from "../../assets/images/device_frames/web-default.png";
 
 const navDotStyling = currentValue => {
   const classes = [
@@ -78,7 +79,11 @@ const WebAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi }) 
               data-color="white"
             >
               <div className="screen">
-                <img className={css(styles.frame_image)} src={data.cover.link} alt="project" />
+                <img
+                  className={css(styles.frame_image)}
+                  src={data.cover ? data.cover.link : defaultImage}
+                  alt="project"
+                />
               </div>
               <div className="button"></div>
             </div>
@@ -237,6 +242,7 @@ const styles = StyleSheet.create({
   },
   frame_image: {
     width: "100%",
+    height: "100%",
   },
   details_wrapper: {
     padding: "2rem",

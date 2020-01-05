@@ -1,23 +1,8 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
-import { withStyles } from "@material-ui/core/styles";
+
 import colors from "../../styles/colors";
 import LoadingComponent from "../../components/Loading";
-import LinearProgress from "@material-ui/core/LinearProgress";
-
-const BorderLinearProgress = withStyles({
-  root: {
-    borderRadius: 20,
-    height: 5,
-    backgroundColor: colors.gray.nine,
-    marginLeft: "1rem",
-    marginRight: "1rem",
-  },
-  bar: {
-    borderRadius: 20,
-    backgroundColor: colors.octalogic.base,
-  },
-})(LinearProgress);
 
 const Loading = props => {
   return (
@@ -28,9 +13,9 @@ const Loading = props => {
           <div className={css(styles.loader_text_wrapper)}>
             <span className={css(styles.loader_text)}>octalogic</span>
           </div>
-          <br></br>
-          <br></br>
-          <BorderLinearProgress />
+        </div>
+        <div>
+          <span className={css(styles.loader_subtext)}>No Image Available</span>
         </div>
       </div>
     </div>
@@ -47,14 +32,16 @@ const styles = StyleSheet.create({
     height: "100vh",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   loader_wrapper: {
-    width: "12rem",
-    height: "12rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: "15rem",
+    height: "15rem",
     "@media only screen and (max-width: 600px)": {
-      height: "5rem",
-      width: "5rem",
+      height: "8rem",
+      width: "8rem",
     },
     "@media only screen and (min-width:601px) and  (max-width: 769px)": {
       height: "10rem",
@@ -66,8 +53,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   loader_text: {
-    fontSize: "2.3rem",
+    fontSize: "5.3rem",
     color: colors.octalogic.base,
+  },
+  loader_subtext: {
+    fontSize: "4.0rem",
+    color: colors.white,
   },
 });
 

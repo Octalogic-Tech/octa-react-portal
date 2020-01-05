@@ -5,6 +5,7 @@ import PortfolioContainer from "./containers/PortfolioContainer";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Loading from "./pages/Loading";
+// import Brand from "./pages/Brand";
 
 const Routes = ({ analytics, toggleTheme, currentTheme }) => (
   <Router>

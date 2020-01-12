@@ -8,6 +8,9 @@ import Loading from "../../pages/Loading";
 import { doFetchPortfolio } from "../../redux/actionCreators/portfolio";
 import { selectPortfolioData, selectPortfolioDataStatus } from "../../redux/selectors/portfolio";
 
+import { doFetchClientInfo, doSendClientInfo } from "../../redux/actionCreators/client";
+import { selectClientData } from "../../redux/selectors/client";
+
 import { doThemeSwitch } from "../../redux/actionCreators/theme";
 import { selectCurrentTheme } from "../../redux/selectors/theme";
 
@@ -23,14 +26,25 @@ const PortfolioContainer = ({
   currentTheme,
   addAnalytics,
   analytics,
+  fetchClientInfo,
+  sendClientInfo,
+  clientInfo,
 }) => {
   let { key } = useParams();
   useEffect(() => {
     fetchPortfolio({ key: key });
     const analyticsObject = ownProps.analytics;
     addAnalytics({ data: analyticsObject });
+    fetchClientInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchPortfolio, addAnalytics, key]);
+
+  useEffect(() => {
+    console.log(clientInfo);
+    if (clientInfo) {
+      sendClientInfo({ ...clientInfo, key: key });
+    }
+  }, [clientInfo, sendClientInfo, key]);
 
   return (
     <Fragment>
@@ -54,6 +68,8 @@ const mapDispatchToProps = dispatch => {
     fetchPortfolio: payload => dispatch(doFetchPortfolio(payload)),
     switchTheme: payload => dispatch(doThemeSwitch(payload)),
     addAnalytics: payload => dispatch(doAddAnalyticsToStore(payload)),
+    fetchClientInfo: payload => dispatch(doFetchClientInfo(payload)),
+    sendClientInfo: payload => dispatch(doSendClientInfo(payload)),
   };
 };
 
@@ -64,6 +80,7 @@ const mapStateToProps = (state, ownProps) => {
     portfolioDataStatus: selectPortfolioDataStatus(state),
     currentTheme: selectCurrentTheme(state),
     analytics: fetchAnalyticsFromStore(state),
+    clientInfo: selectClientData(state),
   };
 };
 

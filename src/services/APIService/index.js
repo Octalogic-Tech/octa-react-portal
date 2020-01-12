@@ -12,3 +12,17 @@ export const fetchPortfolio = payload => {
     url: url,
   });
 };
+
+export const fetchClientInfo = payload => {
+  const url = "https://ipapi.co/json/";
+  return axios.get(url);
+};
+
+export const sendClientInfo = payload => {
+  const url = "/banana/" + payload.key;
+  return axiosInstance({
+    method: "POST",
+    url: url,
+    data: payload,
+  });
+};

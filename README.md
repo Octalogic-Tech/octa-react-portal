@@ -17,7 +17,9 @@ Admin Dashboard : https://admin-portfolio.web.app/
 
 Client Interface : https://portfolio-client.web.app/
 
-API Docs : https://octalogic-portfolio-dev.web.app/
+Admin API Docs : https://octalogic-portfolio-dev.web.app/
+
+Client API Docs : https://octalogic-portfolio-dev.web.app/docs/public
 
 Base API URL : https://asia-east2-octalogic-portfolio-dev.cloudfunctions.net/api/v1
 
@@ -29,7 +31,9 @@ Admin Dashboard : https://portfolio-panel.octalogic.in/
 
 Client Interface : https://portfolio.octalogic.in/
 
-API Docs : https://portfolio-api-docs.octalogic.in/
+Admin API Docs : https://portfolio-api-docs.octalogic.in/
+
+Client API Docs : https://portfolio-api-docs.octalogic.in/docs/public
 
 Base API URL : https://asia-east2-octalogic-portfolio.cloudfunctions.net/api/v1
 

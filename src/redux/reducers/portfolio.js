@@ -19,8 +19,10 @@ const portfolio = handleActions(
       return { ...state, isFetching: false, portfolioData: data.payload };
     },
     [actionCreators.doFetchPortfolioFailure]: (state, { payload: { message } }) => {
-      const data = simulatedPortfolioData.payload;
-      return { ...state, isFetching: false, portfolioData: data };
+      return { ...state, isFetching: false };
+    },
+    [actionCreators.doFetchPortfolioErrorMessage]: (state, { payload: { message } }) => {
+      return { ...state, isFetching: false };
     },
   },
   defaultState,

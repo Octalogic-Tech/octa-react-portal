@@ -12,6 +12,8 @@ import database from "@iconify/icons-mdi/database";
 import python from "@iconify/icons-mdi/language-python";
 import php from "@iconify/icons-mdi/language-php";
 import mongodb from "@iconify/icons-simple-icons/mongodb";
+import codeigniterIcon from '@iconify/icons-simple-icons/codeigniter';
+
 import sass from "@iconify/icons-mdi/sass";
 // import json from "@iconify/icons-mdi/json";
 import firebase from "@iconify/icons-mdi/firebase";
@@ -58,6 +60,9 @@ const findIcon = iconName => {
       break;
     case "mdiLanguagePhp":
       icon = php;
+      break;
+    case "siCodeigniter":
+      icon = codeigniterIcon;
       break;
     case "mdiGraphOutline":
       icon = mongodb;

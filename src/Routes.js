@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-d
 import PortfolioContainer from "./containers/PortfolioContainer";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
+import ServerError from "./pages/ServerError";
 import Loading from "./pages/Loading";
 import StyleGuide from "./pages/StyleGuide";
 // import Brand from "./pages/Brand";
@@ -23,6 +24,11 @@ const Routes = ({ analytics, toggleTheme, currentTheme }) => (
           currentTheme={currentTheme}
         />
       </Route>
+      
+      <Route exact analytics={analytics} path="/" component={Landing} />
+      <Route exact path="/testPage" component={Loading} />
+      <Route exact path="/server_error" component={ServerError} />
+  
       <Route component={NotFound} />
     </Switch>
   </Router>

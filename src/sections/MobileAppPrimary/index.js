@@ -15,6 +15,7 @@ import Technology from "../../components/Technology";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import "../../styles/overrides.css";
+import defaultImage from "../../assets/images/device_frames/mobile-default.png";
 
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
@@ -78,7 +79,11 @@ const MobileAppPrimary = ({ data, activeSection, activeSectionType, fullpageApi 
               data-color="black"
             >
               <div className="screen">
-                <img className={css(styles.frame_image)} src={data.cover.link} alt="project" />
+                <img
+                  className={css(styles.frame_image)}
+                  src={data.cover ? data.cover.link : defaultImage}
+                  alt="project"
+                />
               </div>
               <div className="button"></div>
               {isOpen && (
@@ -231,6 +236,7 @@ const styles = StyleSheet.create({
   },
   frame_image: {
     width: "100%",
+    height: "100%",
   },
   details_wrapper: {
     padding: "2rem",

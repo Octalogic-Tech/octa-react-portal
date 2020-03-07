@@ -4,12 +4,22 @@ import classNames from "classnames";
 
 import colors from "../../styles/colors";
 
+import LandingThumbnail from "../../sections/LandingThumbnail";
+import FooterThumbnail from "../../sections/FooterThumbnail";
+
 import headerImage from "../../assets/images/projects/header.png";
 import footerImage from "../../assets/images/projects/footer.png";
 import webDefaultImage from "../../assets/images/device_frames/web-default.png";
 import mobileDefaultImage from "../../assets/images/device_frames/mobile-default.png";
 
-const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) => {
+const Thumbnail = ({
+  fullpageApi,
+  component,
+  activeSection,
+  setSideBarOpen,
+  data,
+  currentThemeType,
+}) => {
   let thumbnail = null;
   const generateContent = () => {
     switch (component.category.name) {
@@ -49,22 +59,14 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
       case "Landing":
         thumbnail = (
           <div className={css(styles.thumbnail_wrapper_emerging)}>
-            <img
-              className={css(styles.thumbnail_image, styles.thumbnail_image_landing)}
-              src={headerImage}
-              alt="project"
-            />
+            <LandingThumbnail data={data} currentThemeType={currentThemeType} />
           </div>
         );
         break;
       case "Footer":
         thumbnail = (
           <div className={css(styles.thumbnail_wrapper_emerging)}>
-            <img
-              className={css(styles.thumbnail_image, styles.thumbnail_image_landing)}
-              src={footerImage}
-              alt="project"
-            />
+            <FooterThumbnail data={data} currentThemeType={currentThemeType} />
           </div>
         );
         break;
@@ -106,7 +108,9 @@ const Thumbnail = ({ fullpageApi, component, activeSection, setSideBarOpen }) =>
         {generateContent(component)}
         <div className={css(styles.thumbnail_text)}>
           <p className={css(styles.thumbnail_title)}>{component.name}</p>
-          <p className={css(styles.thumbnail_subtitle)}>{component.category.name}</p>
+          <p className={css(styles.thumbnail_subtitle)}>
+            {component.name !== component.category.name ? component.category.name : ""}
+          </p>
         </div>
       </div>
     </div>

@@ -48,6 +48,7 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
             <MobileAppPrimary
               key={section.id}
               data={section}
+              currentThemeType={currentThemeType}
               activeSection={activeSection}
               activeSectionType={activeSectionType}
               fullpageApi={fullpageApi}
@@ -159,8 +160,10 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
                 <Thumbnail
                   fullpageApi={fullPageApi}
                   key={"landing"}
+                  data={data}
                   activeSection={activeSection}
                   setSideBarOpen={setSideBarOpen}
+                  currentThemeType={currentThemeType}
                   component={{
                     id: "landing",
                     category: {
@@ -186,6 +189,8 @@ const Portfolio = ({ toggleTheme, currentTheme, data, switchTheme, analytics }) 
                 <Thumbnail
                   fullpageApi={fullPageApi}
                   key="footer"
+                  data={data}
+                  currentThemeType={currentThemeType}
                   activeSection={activeSection}
                   setSideBarOpen={setSideBarOpen}
                   component={{

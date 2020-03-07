@@ -69,12 +69,6 @@ const FooterThumbnail = ({
         currentThemeType === "dark" ? styles.container_dark : styles.container_light,
       )}
     >
-      <div className={css(styles.polygon_wrapper)}>
-        <div className={css(styles.polygon_fourth)}></div>
-        <div className={css(styles.polygon_third)}></div>
-        <div className={css(styles.polygon_second)}></div>
-        <div className={css(styles.polygon_first)}></div>
-      </div>
       <div className={css(styles.content_wrapper)}>
         <div className={css(styles.content_data)}>
           <span className={css(styles.content_text)}>Thank You, {data.title}</span>

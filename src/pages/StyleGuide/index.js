@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
-import { Link } from "react-router-dom";
-import Fab from "@material-ui/core/Fab";
+// import { Link } from "react-router-dom";
+// import Fab from "@material-ui/core/Fab";
 
 import colors from "../../styles/colors";
-import LoadingComponent from "../../components/Loading";
+// import LoadingComponent from "../../components/Loading";
 
 const Landing = props => {
   return <div className={css(styles.content_horizontal)}>hello</div>;

@@ -67,20 +67,38 @@ const Footer = ({ data, activeSection, activeSectionType, fullpageApi }) => {
       <div className={css(styles.content_wrapper)}>
         <div className={css(styles.content_data)}>
           <span className={css(styles.content_text)}>Thank You, {data.title}</span>
-          <a
-            href={"https://octalogic.in/contact"}
-            target={"_blank"}
-            className={cx("link", css(styles.content_link))}
-          >
-            <Fab
-              variant="extended"
-              color="primary"
-              aria-label="Contact"
-              className={css(styles.content_button)}
+          <div className={css(styles.button_container)}>
+            <a
+              href={"https://octalogic.in/contact"}
+              target={"_blank"}
+              rel="noopener noreferrer"
+              className={cx("link", css(styles.content_link))}
             >
-              Get in Touch
-            </Fab>
-          </a>
+              <Fab
+                variant="extended"
+                color="primary"
+                aria-label="Contact"
+                className={css(styles.content_button)}
+              >
+                Get in Touch
+              </Fab>
+            </a>
+            <a
+              href={"https://github.com/GlennFernandes/octa-react-portal"}
+              target={"_blank"}
+              rel="noopener noreferrer"
+              className={cx("link", css(styles.content_link))}
+            >
+              <Fab
+                variant="extended"
+                color="primary"
+                aria-label="Contact"
+                className={css(styles.content_button)}
+              >
+                View the code
+              </Fab>
+            </a>
+          </div>
         </div>
       </div>
       <div className={css(styles.links_wrapper, isActive.current && styles.fadeInUp)}>
@@ -392,6 +410,10 @@ const styles = StyleSheet.create({
     "@media only screen and (min-width:601px) and  (max-width: 769px)": {
       width: "6rem",
     },
+  },
+  button_container: {
+    display: "flex",
+    justifyContent: "space-around",
   },
   fadeInUp: {
     animationName: fadeInUp,

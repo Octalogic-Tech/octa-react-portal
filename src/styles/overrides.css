@@ -17,6 +17,10 @@
   text-decoration: none;
 }
 
+.device-wrapper {
+  cursor: pointer;
+}
+
 .web_app {
   max-width: 90% !important;
   margin: auto !important;

@@ -2,7 +2,7 @@ import { handleActions } from "redux-actions";
 
 import * as actionCreators from "../actionCreators/portfolio";
 
-import { simulatedPortfolioData } from "../simulators/portfolio";
+// import { simulatedPortfolioData } from "../simulators/portfolio";
 // import {  backendSimulated } from "../simulators/portfolio";
 
 const defaultState = {

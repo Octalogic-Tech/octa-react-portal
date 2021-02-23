@@ -8,20 +8,31 @@ import { Icon } from "@iconify/react";
 import help from "@iconify/icons-mdi/help";
 import react from "@iconify/icons-mdi/react";
 import angularjs from "@iconify/icons-mdi/angularjs";
+import laravel from "@iconify/icons-mdi/laravel";
 import database from "@iconify/icons-mdi/database";
 import python from "@iconify/icons-mdi/language-python";
-import php from "@iconify/icons-mdi/language-php";
+import php from "@iconify-icons/simple-icons/php";
 import mongodb from "@iconify/icons-simple-icons/mongodb";
-import codeigniterIcon from '@iconify/icons-simple-icons/codeigniter';
-
+import codeigniterIcon from "@iconify/icons-simple-icons/codeigniter";
+import serverlessIcon from "@iconify/icons-simple-icons/serverless";
+import postgresql from "@iconify/icons-simple-icons/postgresql";
+import opencv from "@iconify/icons-simple-icons/opencv";
 import sass from "@iconify/icons-mdi/sass";
+import jquery from "@iconify/icons-mdi/jquery";
+import terraform from "@iconify/icons-mdi/terraform";
+import docker from "@iconify/icons-mdi/docker";
+import vuejs from "@iconify/icons-mdi/vuejs";
+import materialUI from "@iconify/icons-mdi/material-ui";
 // import json from "@iconify/icons-mdi/json";
 import firebase from "@iconify/icons-mdi/firebase";
 import nodejs from "@iconify/icons-mdi/nodejs";
 import android from "@iconify/icons-fa-brands/android";
 import clock from "@iconify/icons-mdi/clock";
-
 import handlebars from "@iconify/icons-logos/handlebars";
+import ejs from "@iconify-icons/file-icons/ejs";
+import redux from "@iconify-icons/simple-icons/redux";
+import reduxSaga from "@iconify-icons/simple-icons/redux-saga";
+import openapi from "@iconify-icons/file-icons/openapi";
 
 import colors from "../../styles/colors";
 
@@ -58,7 +69,7 @@ const findIcon = iconName => {
     case "mdiLanguagePython":
       icon = python;
       break;
-    case "mdiLanguagePhp":
+    case "siPHP":
       icon = php;
       break;
     case "siCodeigniter":
@@ -84,6 +95,45 @@ const findIcon = iconName => {
       break;
     case "clock":
       icon = clock;
+      break;
+    case "siServerless":
+      icon = serverlessIcon;
+      break;
+    case "siPostgresql":
+      icon = postgresql;
+      break;
+    case "mdiLaravel":
+      icon = laravel;
+      break;
+    case "fiEjs":
+      icon = ejs;
+      break;
+    case "mdiJquery":
+      icon = jquery;
+      break;
+    case "mdiTerraform":
+      icon = terraform;
+      break;
+    case "fiOpenapi":
+      icon = openapi;
+      break;
+    case "mdiDocker":
+      icon = docker;
+      break;
+    case "siOpencv":
+      icon = opencv;
+      break;
+    case "mdiVuejs":
+      icon = vuejs;
+      break;
+    case "siRedux":
+      icon = redux;
+      break;
+    case "siReduxSaga":
+      icon = reduxSaga;
+      break;
+    case "mdiMaterialUI":
+      icon = materialUI;
       break;
     default:
       icon = help;

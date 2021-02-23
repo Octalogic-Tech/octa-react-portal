@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from "react";
 import { StyleSheet, css } from "aphrodite";
 
 import colors from "../../styles/colors";
-import base from "../../styles/base";
 
 import icon from "../../assets/images/icons/icon-loader.png";
 

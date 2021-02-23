@@ -8,7 +8,6 @@ import LandingThumbnail from "../../sections/LandingThumbnail";
 import FooterThumbnail from "../../sections/FooterThumbnail";
 
 import headerImage from "../../assets/images/projects/header.png";
-import footerImage from "../../assets/images/projects/footer.png";
 import webDefaultImage from "../../assets/images/device_frames/web-default.png";
 import mobileDefaultImage from "../../assets/images/device_frames/mobile-default.png";
 

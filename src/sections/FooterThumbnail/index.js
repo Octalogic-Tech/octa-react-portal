@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { StyleSheet, css } from "aphrodite";
 import { fadeInUp } from "react-animations";
-import cx from "classnames";
 import Icon from "@mdi/react";
 import {
   mdiFacebook,
@@ -16,7 +15,6 @@ import {
 
 import "html5-device-mockups";
 
-import base from "../../styles/base";
 import colors from "../../styles/colors";
 
 import Box from "@material-ui/core/Box";
